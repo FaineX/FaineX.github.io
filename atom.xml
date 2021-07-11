@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://FaineX.github.io</id>
     <title>For XeniaF</title>
-    <updated>2021-07-11T11:10:19.304Z</updated>
+    <updated>2021-07-11T11:24:27.617Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://FaineX.github.io"/>
     <link rel="self" href="https://FaineX.github.io/atom.xml"/>
@@ -11,12 +11,235 @@
     <icon>https://FaineX.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, For XeniaF</rights>
     <entry>
+        <title type="html"><![CDATA[P1174 打砖块]]></title>
+        <id>https://FaineX.github.io/post/p1174-da-zhuan-kuai/</id>
+        <link href="https://FaineX.github.io/post/p1174-da-zhuan-kuai/">
+        </link>
+        <updated>2021-07-11T11:17:22.000Z</updated>
+        <content type="html"><![CDATA[<p>关于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>z</mi><mi>h</mi><mi>w</mi></mrow><annotation encoding="application/x-tex">zhw</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault">h</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span>神奇的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">DP</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span>状态。</p>
+<ul>
+<li>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>g</mi><mrow><mn>0</mn><mi mathvariant="normal">/</mi><mn>1</mn><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">g_{0/1,i,j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7857599999999999em;vertical-align:-0.3551999999999999em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span><span class="mord mtight">/</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span></span></span></span>为最后一次是否打在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>~<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>列中，一共打了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>颗子弹的最大得分</li>
+<li>附初始值</li>
+</ul>
+<pre><code class="language-cpp">g[0][j][dk]=g[0][j-1][dk];
+g[1][j][dk]=g[1][j-1][dk];
+</code></pre>
+<p>其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">dk</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>枚举的是打了几颗子弹，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>的循环范围为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>。</p>
+<pre><code class="language-cpp">  for(register int i=n;i&gt;=up[j];--i)
+    if(dk&gt;=kg[i][j])
+        if(!f[i][j])
+            g[1][j][dk]=max(g[1][j][dk],g[0][j-1][dk-kg[i][j]]+s[i][j]),
+            g[0][j][dk]=max(g[0][j][dk],g[0][j-1][dk-kg[i][j]]+s[i][j]);
+        else
+            g[1][j][dk]=max(g[1][j][dk],g[1][j-1][dk-kg[i][j]]+s[i][j]),
+            g[0][j][dk]=max(g[0][j][dk],g[0][j-1][dk-kg[i][j]]+s[i][j]);
+</code></pre>
+<p>最后一枚子弹如果想要最优的话，一定要打到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>上（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f_{i,j}=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>），所以假设此时打出了最后一枚子弹，那么它是可以由没有打出最后一枚子弹的状态转移过来的。至于为什么是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，本列中下面的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>已经被打完了（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>k</mi><mo>−</mo><mi>k</mi><msub><mi>g</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">dk-kg_{i,j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>），当然是从前一列转过来阿！如果此时是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>的话一定不可能是最后一枚子弹那么假设已经打了最后一枚了，这一枚<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>只能算是附加的了，不可能再由没有打最后一枚的状态转移过来的了，所以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>g</mi><mrow><mn>1</mn><mo separator="true">,</mo><mi>j</mi><mo separator="true">,</mo><mi>d</mi><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">g_{1,j,dk}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>如代码中所示。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[P3554 [POI2013]LUK-Triumphal arch]]></title>
+        <id>https://FaineX.github.io/post/p3554-poi2013luk-triumphal-arch/</id>
+        <link href="https://FaineX.github.io/post/p3554-poi2013luk-triumphal-arch/">
+        </link>
+        <updated>2021-07-11T11:17:02.000Z</updated>
+        <content type="html"><![CDATA[<p>一道看起来像贪心，实际上是二分和动态规划的题目。</p>
+<ul>
+<li>题目中说<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>只要碰到了白色就算是赢了，那么很显然在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>走下一步之前我门要把他所有可能到达的节点全变为黑色。</li>
+<li>一个很容易产生的错误想法是找到所有节点中儿子个数的最大值，直接输出</li>
+</ul>
+<blockquote>
+<p>这样显然不太合理。如果节点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>是节点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>的父亲，节点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>仅有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>一个儿子但是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>有很多很多儿子，那么在处理<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>的儿子<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>是顺便也处理部分<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>的儿子肯定是更优秀的。</p>
+</blockquote>
+<ul>
+<li>很容易想到二分<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span></li>
+<li>在检验时后考虑“借机会”</li>
+</ul>
+<blockquote>
+<p>如果子结点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>无法一次性处理完自己的所有儿子，就需要消耗<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>处理时候的名额，也就相当于向<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>申请增加<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>o</mi><mi>n</mi><mo>[</mo><mi>v</mi><mo>]</mo><mo>−</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">son[v]-k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个名额，同时<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>减少<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>o</mi><mi>n</mi><mo>[</mo><mi>v</mi><mo>]</mo><mo>−</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">son[v]-k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个名额；如果此时<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>又不够了，那又要向上面一级借...最终如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>所剩下的名额大于0，那么也就是说名额不够了（在我的程序中，如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>向<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>借<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>个名额，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>u</mi><mo>]</mo><mo>+</mo><mo>=</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">f[u]+=m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span><span class="mord">+</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>。如果在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>时还不能把名额匀完（即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mn>1</mn><mo>]</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f[1]&gt;0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>），那么这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>肯定是不符合要求的）</p>
+</blockquote>
+<ul>
+<li>然后就可以愉快的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span>啦<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi><mi>w</mi><mi>w</mi></mrow><annotation encoding="application/x-tex">www</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span></li>
+</ul>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define ll long long
+using namespace std;
+ll n,u,v,ans,son[300001];
+struct Node{
+    ll to,nx;
+}e[300001&lt;&lt;2];
+ll cnt,hd[300001&lt;&lt;1],fa[300001];
+ll l,r,mid;
+ll f[300001];
+
+inline ll read(){
+    ll x=0,f=0;char c=getchar();
+    while(!isdigit(c))
+        f|=c=='-',c=getchar();
+    while(isdigit(c))
+        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48),c=getchar();
+    return f?-x:x;
+}
+
+inline void add(ll u,ll v){
+    e[++cnt].to=v;
+    e[cnt].nx=hd[u];
+    hd[u]=cnt;
+}
+
+inline void dfs(ll x){
+    for(register int i=hd[x];i;i=e[i].nx){
+        ll to=e[i].to;
+        if(to==fa[x])
+            continue;
+        fa[to]=x;
+        ++son[x];
+//        cout&lt;&lt;x&lt;&lt;&quot; &quot;&lt;&lt;to&lt;&lt;&quot; &quot;&lt;&lt;son[x]&lt;&lt;endl;
+        ans=max(ans,son[x]);
+        dfs(to);       
+    }
+}
+
+inline void search(ll nw,ll ft){
+    f[nw]=son[nw]-mid;
+    for(register int i=hd[nw];i;i=e[i].nx){
+        ll to=e[i].to;
+        if(to==ft)      continue;
+        search(to,nw);
+        if(f[to]&gt;0)
+            f[nw]+=f[to];
+    }
+}
+
+int main(){
+    n=read();
+    for(register int i=1;i&lt;n;++i){
+        u=read();
+        v=read();
+        add(u,v);
+        add(v,u);
+    }
+    dfs(1);
+    l=son[1],r=ans;
+    ans=0;
+    while(l&lt;=r){
+        mid=(l+r)&gt;&gt;1;
+        search(1,0);
+        if(f[1]&lt;=0)
+            r=mid-1,ans=mid;
+        else   
+            l=mid+1;
+    }
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[P7109 滴水不漏]]></title>
+        <id>https://FaineX.github.io/post/p7109-di-shui-bu-lou/</id>
+        <link href="https://FaineX.github.io/post/p7109-di-shui-bu-lou/">
+        </link>
+        <updated>2021-07-11T11:15:51.000Z</updated>
+        <content type="html"><![CDATA[<p>美妙的交互题。<br>
+下列题解讲的很清楚阿：<br>
+<img src="https://img2020.cnblogs.com/blog/2144984/202107/2144984-20210701110655346-107104229.png" alt="" loading="lazy"><br>
+最后再附上一个我打了注释的程序吧<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi><mi>w</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">qwq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span></p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define ll int
+#define maxn 1111
+using namespace std;
+ll n,a[maxn],fg,tp,sum[maxn];
+ll ns,ls,k,as;
+
+inline ll tot(ll x){
+    return (x*(x+1))/2;
+}
+
+inline int ask(ll x,ll y){
+    printf(&quot;? %d %d\n&quot;,x,y);
+    cout.flush();
+    int ln;
+    scanf(&quot;%d&quot;,&amp;ln);
+    return ln;
+}
+
+int main(){
+    scanf(&quot;%d&quot;,&amp;n);
+    as=ask(1,1);
+    k=ns=ls=0;
+    if(as)      sum[1]=1,ns=1,k=2;
+    else        sum[1]=0,ns=0,k=1;
+    if(n==1){
+        printf(&quot;! %d\n&quot;,sum[1]);
+        cout.flush();
+        return 0;
+    }//特判1的情况
+    for(register int i=2;i&lt;=n;++i){
+        while(k&lt;i){//将i中的水依次倒入k,k+1,...
+            if(ask(i,k))//如果k倒满了，nowsum为现在前k个水桶的水量总和，k更新，更新后的k值为0    
+                ns=tot(k),++k,ls=0;
+            else//如果不满，可以跳出了
+                break;
+        }
+        if(k==i+1){//如果一直倒到了i+1
+            sum[i]=ns;//前i个水桶都是满的，水量总共为现在倒满了的水量
+            continue;//处理下一个水桶
+        }
+        if(ask(k,k)){//如果k为i（或者更小），倒满
+            ++k,ns=tot(k-1),sum[i]=ns;
+            //更新k，现在所有满了的水桶的总水量为更新前的k（即现在的k-1），前i个的所有值为nowsum
+            continue;//直接处理下一个水桶
+        }
+        ll l=1,r=k-1,pos=0;//k此时并没有倒满，尝试在1~(k-1)中寻找
+        while(l&lt;=r){
+            ll mid=(l+r)&gt;&gt;1;
+            if(ask(mid,k))//如果将mid的水量全部倒入k，k倒满了
+                pos=mid,r=mid-1;//向下界寻找
+            else    
+                l=mid+1;//否则向上界寻找
+            ask(k,mid);//撤回操作（方便后面的寻找）
+        }
+        if(!pos)//如果并没有找到pos的话
+            ls=0;//a[k]里面并没有任何水，即k-1个桶中是满的而k桶是空的
+        else    
+            ls=k-pos;//否则就可以愉快的求出k中的水量了
+        sum[i]=ns+ls;//此时1～i中的总水量为灌满了水的桶的总水量和第k个桶的总水量
+        //循环结束，此时1～(k-1)中的水一定是满的，k可满可不满
+        //在求每一个桶的时候，将其分为两部分求：
+        //先通过往前面没有水（或者不满的k）中倒来确定1～i中的所有水一共可以填满多少个水桶，
+        //再通过二分求出多余的那部分水到底是多少，最终一定可以确定前缀和数组的值
+    }
+    printf(&quot;! &quot;);
+    for(register int i=1;i&lt;=n;++i)
+        printf(&quot;%d &quot;,sum[i]-sum[i-1]);//前缀和求出每一个桶中的原有水量
+    cout.flush();
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[NOI2018 归程]]></title>
+        <id>https://FaineX.github.io/post/noi2018-gui-cheng/</id>
+        <link href="https://FaineX.github.io/post/noi2018-gui-cheng/">
+        </link>
+        <updated>2021-07-11T11:12:42.000Z</updated>
+        <content type="html"><![CDATA[<p>kruskal 重构树板子题。<br>
+以海拔从高到低建树，海拔越高节点深度越深。<br>
+倍增寻找最后一个不会被水淹没的道路，直接输出子树中距离<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>最小的点的距离即可。<br>
+距离可以用 dijkstra 预处理。<br>
+这道题倍增的时候常数开到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>19</mn></mrow><annotation encoding="application/x-tex">19</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">9</span></span></span></span>就差不多了，开大了会 T。</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[向量学习笔记]]></title>
         <id>https://FaineX.github.io/post/xiang-liang-xue-xi-bi-ji/</id>
         <link href="https://FaineX.github.io/post/xiang-liang-xue-xi-bi-ji/">
         </link>
         <updated>2021-07-11T09:42:51.000Z</updated>
-        <content type="html"><![CDATA[<p>向量学习笔记</p>
+        <content type="html"><![CDATA[<p>一些关于向量的东西。</p>
 <p><strong>一、向量</strong></p>
 <ul>
 <li>向量就是，一条带箭头的，经过原点的线段</li>
