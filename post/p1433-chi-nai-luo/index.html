@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="。">
 <meta name="theme-color" content="#000">
-<title>NOI2018 归程 | For XeniaF</title>
+<title>P1433 吃奶酪 | For XeniaF</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1626005027399">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,7 +41,7 @@
 
 
 
-  <meta name="description" content="NOI2018 归程" />
+  <meta name="description" content="P1433 吃奶酪" />
   <meta name="keywords" content="" />
 </head>
 
@@ -312,8 +312,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://FaineX.github.io/post/noi2018-gui-cheng/">
-      NOI2018 归程
+    <a class="post-title-link" href="https://FaineX.github.io/post/p1433-chi-nai-luo/">
+      P1433 吃奶酪
     </a>
   </h1>
   <div class="post-meta">
@@ -321,28 +321,118 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-07-11 19:12:42">2021-07-11</span>
+      <span class="publish-time" data-t="2021-07-11 19:56:56">2021-07-11</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>94<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>621<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>kruskal 重构树板子题。<br>
-以海拔从高到低建树，海拔越高节点深度越深。<br>
-倍增寻找最后一个不会被水淹没的道路，直接输出子树中距离<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>最小的点的距离即可。<br>
-距离可以用 dijkstra 预处理。<br>
-这道题倍增的时候常数开到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>19</mn></mrow><annotation encoding="application/x-tex">19</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">9</span></span></span></span>就差不多了，开大了会 T。</p>
+              <p>状压DP。</p>
+<p>初见：这不就是跟<a href="https://www.luogu.com.cn/problem/P2831">愤怒的小鸟</a>和<a href="https://www.cnblogs.com/Ateisti/p/6039165.html">制作武器</a>差不多吗？</p>
+<p>（代码）</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define ll long long
+using namespace std;
+ll n,lg;
+double x[15],y[15],f[1&lt;&lt;15];
+inline ll read(){
+    ll x=0,f=0;
+    char c=getchar();
+    while(!isdigit(c))
+        f|=c=='-',c=getchar();
+    while(isdigit(c))
+        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48),c=getchar();
+    return f?-x:x;
+}
+inline double solve(ll u,ll v){
+    double tot=0;
+    tot=fabs(x[u]-x[v])*fabs(x[u]-x[v])+fabs(y[u]-y[v])*fabs(y[u]-y[v]);
+    tot=sqrt(tot);
+    return tot;
+}
+int main(){
+    n=read();
+    for(register int i=1;i&lt;=n;++i)
+        scanf(&quot;%lf%lf&quot;,&amp;x[i],&amp;y[i]);
+    lg=1&lt;&lt;n;
+    for(register int i=0;i&lt;lg;++i)
+        f[i]=(double)0x3f3f3f3f;
+    for(register int i=1;i&lt;=n;++i)
+        f[1&lt;&lt;(i-1)]=solve(0,i);
+    for(register int i=0;i&lt;lg;++i)
+        for(register int j=1;j&lt;=n;++j)
+            if(i&amp;(1&lt;&lt;(j-1)))
+                for(register int k=1;k&lt;=n;++k)
+                    if((k!=j)&amp;&amp;!(i&amp;(1&lt;&lt;(k-1))))
+                        f[i^(1&lt;&lt;(k-1))]=min(f[i^(1&lt;&lt;(k-1))],f[i]+solve(j,k));
+    cout&lt;&lt;fixed&lt;&lt;setprecision(2)&lt;&lt;f[lg-1];
+    return 0;
+}
+</code></pre>
+<p>错法和<a href="https://www.luogu.com.cn/blog/29243/chi-nai-lao">这个题解</a>一模一样（详情也参照题解）</p>
+<p>（AC代码）</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define ll long long
+using namespace std;
+ll n,lg,top,q[16];
+double x[16],y[16],f[16][1&lt;&lt;16],ans;
+inline ll read(){
+    ll x=0,f=0;
+    char c=getchar();
+    while(!isdigit(c))
+        f|=c=='-',c=getchar();
+    while(isdigit(c))
+        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48),c=getchar();
+    return f?-x:x;
+}
+inline double solve(ll u,ll v){
+    double tot=0;
+    tot=fabs(x[u]-x[v])*fabs(x[u]-x[v])+fabs(y[u]-y[v])*fabs(y[u]-y[v]);
+    tot=sqrt(tot);
+    return tot;
+}
+int main(){
+    memset(f,127,sizeof(f));
+    n=read();
+    for(register int i=1;i&lt;=n;++i){
+        scanf(&quot;%lf%lf&quot;,&amp;x[i],&amp;y[i]);
+        f[i][1&lt;&lt;(i-1)]=solve(0,i);
+    }        
+    lg=1&lt;&lt;n;
+    for(register int i=0;i&lt;lg;++i){
+        top=0;
+        for(register int j=1;j&lt;=n;++j)
+            if(!(i&amp;(1&lt;&lt;(j-1))))
+                q[++top]=j;
+        for(register int j=1;j&lt;=n;++j)
+            if(abs(f[j][i]-f[0][0])&gt;=0.0000001)
+                for(register int k=1;k&lt;=top;++k)
+                    f[q[k]][i^(1&lt;&lt;(q[k]-1))]=min(f[q[k]][i^(1&lt;&lt;(q[k]-1))],f[j][i]+solve(q[k],j));
+    }        
+    ans=f[0][0];
+    for(register int i=1;i&lt;=n;++i)
+        ans=min(ans,f[i][lg-1]);
+    printf(&quot;%.2lf\n&quot;,ans);
+    return 0;
+}
+</code></pre>
+<p>double赋最大值就赋<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>127</mn></mrow><annotation encoding="application/x-tex">127</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">7</span></span></span></span></p>
+<p>值得注意的是，ans如果赋值成<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>127</mn></mrow><annotation encoding="application/x-tex">127</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">7</span></span></span></span>会错一个点？</p>
+<p>经测试，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mn>0</mn><mo>]</mo><mo>[</mo><mn>0</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">f[0][0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span></span></span></span>的值确实要比<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>127</mn></mrow><annotation encoding="application/x-tex">127</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">7</span></span></span></span>大很多</p>
+<pre><code class="language-cpp">memset(f,127,sizeof(f));
+</code></pre>
+<p>这条语句中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span>数组被赋值成为了1.38242e+306</p>
 
             </div>
             
@@ -355,7 +445,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://FaineX.github.io/post/noi2018-gui-cheng/" title="NOI2018 归程">https://FaineX.github.io/post/noi2018-gui-cheng/</a>
+      <a href="https://FaineX.github.io/post/p1433-chi-nai-luo/" title="P1433 吃奶酪">https://FaineX.github.io/post/p1433-chi-nai-luo/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -369,14 +459,14 @@
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="P7109 滴水不漏" href="https://FaineX.github.io/post/p7109-di-shui-bu-lou/">P7109 滴水不漏</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="P7109 滴水不漏" href="https://FaineX.github.io/post/p7109-di-shui-bu-lou/">上一篇</a>
+        <a class="nav-pc-next" title="P1270 “访问”美术馆" href="https://FaineX.github.io/post/p1270-fang-wen-mei-zhu-guan/">P1270 “访问”美术馆</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="P1270 “访问”美术馆" href="https://FaineX.github.io/post/p1270-fang-wen-mei-zhu-guan/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="向量学习笔记" href="https://FaineX.github.io/post/xiang-liang-xue-xi-bi-ji/">向量学习笔记</a>
-        <a class="nav-mobile-next" title="向量学习笔记" href="https://FaineX.github.io/post/xiang-liang-xue-xi-bi-ji/">下一篇</a>
+        <a class="nav-pc-next" title="P1896 [SCOI2005]互不侵犯" href="https://FaineX.github.io/post/p1896-scoi2005hu-bu-qin-fan/">P1896 [SCOI2005]互不侵犯</a>
+        <a class="nav-mobile-next" title="P1896 [SCOI2005]互不侵犯" href="https://FaineX.github.io/post/p1896-scoi2005hu-bu-qin-fan/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

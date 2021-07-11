@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="。">
 <meta name="theme-color" content="#000">
-<title>NOI2018 归程 | For XeniaF</title>
+<title>P3942 将军令 | For XeniaF</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1626005027399">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,7 +41,7 @@
 
 
 
-  <meta name="description" content="NOI2018 归程" />
+  <meta name="description" content="P3942 将军令" />
   <meta name="keywords" content="" />
 </head>
 
@@ -312,8 +312,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://FaineX.github.io/post/noi2018-gui-cheng/">
-      NOI2018 归程
+    <a class="post-title-link" href="https://FaineX.github.io/post/p3942-jiang-jun-ling/">
+      P3942 将军令
     </a>
   </h1>
   <div class="post-meta">
@@ -321,28 +321,110 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-07-11 19:12:42">2021-07-11</span>
+      <span class="publish-time" data-t="2021-07-11 19:42:13">2021-07-11</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>3<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>94<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>461<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>kruskal 重构树板子题。<br>
-以海拔从高到低建树，海拔越高节点深度越深。<br>
-倍增寻找最后一个不会被水淹没的道路，直接输出子树中距离<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>最小的点的距离即可。<br>
-距离可以用 dijkstra 预处理。<br>
-这道题倍增的时候常数开到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>19</mn></mrow><annotation encoding="application/x-tex">19</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">9</span></span></span></span>就差不多了，开大了会 T。</p>
+              <p>典型的树形<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">DP</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span>。</p>
+<p>具体思路参考题解</p>
+<p>注意：</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">dfs2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span><span class="mord">2</span></span></span></span>中，开始一直觉得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">pre</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span></span></span></span>没有用，用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mo>[</mo><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">fa[x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>不就好了吗？反正你要推到的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>不是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的儿子吗！</p>
+<p>结果一直<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>25</mn><mi mathvariant="normal">分</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">25分......</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mord cjk_fallback">分</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span></p>
+<p>其实呢，在这个搜索中，它的起点不是1可以是任意一个节点</p>
+<p>如果还按开始的那个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mo>[</mo><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">fa[x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>的话肯定是不行的</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mo>[</mo><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">fa[x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>成立仅限于搜索过程是以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>为节点的深度优先搜索</p>
+<p>所以一定要记录<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">pre</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span></span></span></span></p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define ll long long 
+#define maxn 200005
+using namespace std;
+ll n,k,t,hd[maxn],tt=0,u,v,dh[maxn],fa[maxn],vit[maxn],ans;
+struct Node{
+    ll to,nx;
+}e[maxn&lt;&lt;1];
+struct node{
+    ll fm,dp;
+}q[maxn&lt;&lt;1];
+inline ll read(){
+    ll x=0,f=0;
+    char c=getchar();
+    while(!isdigit(c))
+        f|=c=='-',c=getchar();
+    while(isdigit(c))
+        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48),c=getchar();
+    return f?-x:x;
+}
+inline void add(ll u,ll v){
+    e[++tt].to=v;
+    e[tt].nx=hd[u];
+    hd[u]=tt;
+}
+inline void dfs1(ll x){
+    for(register int i=hd[x];i;i=e[i].nx){
+        ll u=e[i].to;
+        if(!dh[u]){
+            fa[u]=x;
+            dh[u]=dh[x]+1;
+            dfs1(u);    
+        }
+    }
+}
+inline ll find(ll x){
+    ll sp=1;
+    while(sp&lt;=k){
+        ++sp;
+        x=fa[x];
+    }
+    return x;
+}
+inline void dfs2(ll x,ll pre,ll sp){
+    vit[x]=1;
+    if(sp==k)    return;
+    for(register int i=hd[x];i;i=e[i].nx){
+        ll u=e[i].to;
+        if(u!=pre)    dfs2(u,x,sp+1);
+    }
+}
+inline bool cmp(node a,node b){
+    return a.dp&gt;b.dp;
+}
+int main(){
+    n=read();k=read();t=read();
+    for(register int i=1;i&lt;n;++i){
+        u=read();v=read();
+        add(u,v);add(v,u);
+    }
+    dh[1]=1;fa[1]=1;dfs1(1);
+    for(register int i=1;i&lt;=n;++i){
+        q[i].fm=i;
+        q[i].dp=dh[i];
+    }
+    sort(q+1,q+n+1,cmp);
+    for(register int i=1;i&lt;=n;++i){
+        node xx=q[i];
+        int x=xx.fm;
+        if(vit[x])    continue;
+        ++ans;
+        ll y=find(x);
+        dfs2(y,0,0);
+    }
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}
+</code></pre>
 
             </div>
             
@@ -355,7 +437,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://FaineX.github.io/post/noi2018-gui-cheng/" title="NOI2018 归程">https://FaineX.github.io/post/noi2018-gui-cheng/</a>
+      <a href="https://FaineX.github.io/post/p3942-jiang-jun-ling/" title="P3942 将军令">https://FaineX.github.io/post/p3942-jiang-jun-ling/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -369,14 +451,14 @@
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="P7109 滴水不漏" href="https://FaineX.github.io/post/p7109-di-shui-bu-lou/">P7109 滴水不漏</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="P7109 滴水不漏" href="https://FaineX.github.io/post/p7109-di-shui-bu-lou/">上一篇</a>
+        <a class="nav-pc-next" title="P2899 [USACO08JAN]Cell Phone Network G" href="https://FaineX.github.io/post/p2899-usaco08jancell-phone-network-g/">P2899 [USACO08JAN]Cell Phone Network G</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="P2899 [USACO08JAN]Cell Phone Network G" href="https://FaineX.github.io/post/p2899-usaco08jancell-phone-network-g/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="向量学习笔记" href="https://FaineX.github.io/post/xiang-liang-xue-xi-bi-ji/">向量学习笔记</a>
-        <a class="nav-mobile-next" title="向量学习笔记" href="https://FaineX.github.io/post/xiang-liang-xue-xi-bi-ji/">下一篇</a>
+        <a class="nav-pc-next" title="区间DP" href="https://FaineX.github.io/post/qu-jian-dp/">区间DP</a>
+        <a class="nav-mobile-next" title="区间DP" href="https://FaineX.github.io/post/qu-jian-dp/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

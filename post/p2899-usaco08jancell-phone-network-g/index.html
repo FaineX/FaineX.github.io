@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="。">
 <meta name="theme-color" content="#000">
-<title>NOI2018 归程 | For XeniaF</title>
+<title>P2899 [USACO08JAN]Cell Phone Network G | For XeniaF</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1626005027399">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,7 +41,7 @@
 
 
 
-  <meta name="description" content="NOI2018 归程" />
+  <meta name="description" content="P2899 [USACO08JAN]Cell Phone Network G" />
   <meta name="keywords" content="" />
 </head>
 
@@ -312,8 +312,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://FaineX.github.io/post/noi2018-gui-cheng/">
-      NOI2018 归程
+    <a class="post-title-link" href="https://FaineX.github.io/post/p2899-usaco08jancell-phone-network-g/">
+      P2899 [USACO08JAN]Cell Phone Network G
     </a>
   </h1>
   <div class="post-meta">
@@ -321,28 +321,91 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-07-11 19:12:42">2021-07-11</span>
+      <span class="publish-time" data-t="2021-07-11 19:43:46">2021-07-11</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>3<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>94<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>543<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>kruskal 重构树板子题。<br>
-以海拔从高到低建树，海拔越高节点深度越深。<br>
-倍增寻找最后一个不会被水淹没的道路，直接输出子树中距离<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>最小的点的距离即可。<br>
-距离可以用 dijkstra 预处理。<br>
-这道题倍增的时候常数开到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>19</mn></mrow><annotation encoding="application/x-tex">19</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">9</span></span></span></span>就差不多了，开大了会 T。</p>
+              <p>树形DP。<br>
+思路参考题解。</p>
+<p>典型的树形<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">DP</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span></p>
+<p>不妨设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mn>0</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">f[x][0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span></span></span></span>为x节点被自己影响，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">f[x][1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span>为被儿子影响，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mn>2</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">f[x][2]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">2</span><span class="mclose">]</span></span></span></span>为被父亲影响</p>
+<p>显然，</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mn>0</mn><mo>]</mo><mo>=</mo><mi>s</mi><mi>u</mi><mi>m</mi><mo>(</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>f</mi><mo>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo>]</mo><mo>[</mo><mn>0</mn><mo>]</mo><mo separator="true">,</mo><mi>f</mi><mo>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo>]</mo><mo>[</mo><mn>1</mn><mo>]</mo><mo separator="true">,</mo><mi>f</mi><mo>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo>]</mo><mo>[</mo><mn>2</mn><mo>]</mo><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">f[x][0]=sum(min(f[son][0],f[son][1],f[son][2]))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">2</span><span class="mclose">]</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mn>2</mn><mo>]</mo><mo>=</mo><mi>s</mi><mi>u</mi><mi>m</mi><mo>(</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>f</mi><mo>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo>]</mo><mo>[</mo><mn>0</mn><mo>]</mo><mo separator="true">,</mo><mi>f</mi><mo>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo>]</mo><mo>[</mo><mn>1</mn><mo>]</mo><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">f[x][2]=sum(min(f[son][0],f[son][1]))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">2</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></p>
+<p>而<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">f[x][1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span>，即被自己的儿子影响，只要x所有的儿子中有一个放了信号塔就ok了，其余的儿子放不放无所谓</p>
+<p>那么我们可以枚举这个儿子是谁</p>
+<p>假设这个儿子是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">n</span></span></span></span>，除<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">n</span></span></span></span>以外的儿子是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span></p>
+<p>那么最终$f[x][1]=f[sn][0]+min(f[u][1],f[u][0]) $$//<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">其</mi><mi mathvariant="normal">中</mi></mrow><annotation encoding="application/x-tex">其中</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">其</span><span class="mord cjk_fallback">中</span></span></span></span>u<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">儿</mi><mi mathvariant="normal">子</mi><mi mathvariant="normal">可</mi><mi mathvariant="normal">以</mi><mi mathvariant="normal">参</mi><mi mathvariant="normal">照</mi></mrow><annotation encoding="application/x-tex">儿子可以参照</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">儿</span><span class="mord cjk_fallback">子</span><span class="mord cjk_fallback">可</span><span class="mord cjk_fallback">以</span><span class="mord cjk_fallback">参</span><span class="mord cjk_fallback">照</span></span></span></span>f[x][2]$</p>
+<p>看题解吧写的好多了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi><mi>w</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">qwq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span></p>
+<p>细节见代码.</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define maxn 10001
+using namespace std;
+ll n,u,v,hd[maxn],ct,fa[maxn],f[maxn][3];
+struct Node{
+    ll to,nx;
+}e[maxn&lt;&lt;2];
+inline ll read(){
+    ll x=0,f=0;
+    char c=getchar();
+    while(!isdigit(c))
+        f|=c=='-',c=getchar();
+    while(isdigit(c))
+        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48),c=getchar();
+    return f?-x:x;
+}
+inline void add(ll x,ll y){
+    e[++ct].to=y;
+    e[ct].nx=hd[x];
+    hd[x]=ct;
+}
+inline void dfs(ll x){
+    ll sn=0;
+    f[x][0]=1;
+    for(register int i=hd[x];i;i=e[i].nx){
+        ll u=e[i].to;
+        if(u!=fa[x]){
+            fa[u]=x;
+            dfs(u);
+            f[x][0]+=min(f[u][0],min(f[u][1],f[u][2]));
+            f[x][2]+=min(f[u][0],f[u][1]);
+            if((f[sn][0]-min(f[sn][0],f[sn][1]))&gt;(f[u][0]-min(f[u][0],f[u][1])))
+                sn=u;
+        }
+    }
+    f[x][1]=f[sn][0];
+    for(register int i=hd[x];i;i=e[i].nx){
+        ll u=e[i].to;
+        if(fa[x]==u||sn==u)        continue;
+        f[x][1]+=min(f[u][0],f[u][1]);
+    }
+}
+int main(){
+    n=read();
+    for(register int i=1;i&lt;n;++i){
+        u=read();v=read();
+        add(u,v);add(v,u);
+    }
+    f[0][0]=0x3f3f3f3f;
+    dfs(1);
+    printf(&quot;%lld\n&quot;,min(f[1][0],f[1][1]));
+    return 0;
+}
+</code></pre>
 
             </div>
             
@@ -355,7 +418,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://FaineX.github.io/post/noi2018-gui-cheng/" title="NOI2018 归程">https://FaineX.github.io/post/noi2018-gui-cheng/</a>
+      <a href="https://FaineX.github.io/post/p2899-usaco08jancell-phone-network-g/" title="P2899 [USACO08JAN]Cell Phone Network G">https://FaineX.github.io/post/p2899-usaco08jancell-phone-network-g/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -369,14 +432,14 @@
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="P7109 滴水不漏" href="https://FaineX.github.io/post/p7109-di-shui-bu-lou/">P7109 滴水不漏</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="P7109 滴水不漏" href="https://FaineX.github.io/post/p7109-di-shui-bu-lou/">上一篇</a>
+        <a class="nav-pc-next" title="P1896 [SCOI2005]互不侵犯" href="https://FaineX.github.io/post/p1896-scoi2005hu-bu-qin-fan/">P1896 [SCOI2005]互不侵犯</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="P1896 [SCOI2005]互不侵犯" href="https://FaineX.github.io/post/p1896-scoi2005hu-bu-qin-fan/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="向量学习笔记" href="https://FaineX.github.io/post/xiang-liang-xue-xi-bi-ji/">向量学习笔记</a>
-        <a class="nav-mobile-next" title="向量学习笔记" href="https://FaineX.github.io/post/xiang-liang-xue-xi-bi-ji/">下一篇</a>
+        <a class="nav-pc-next" title="P3942 将军令" href="https://FaineX.github.io/post/p3942-jiang-jun-ling/">P3942 将军令</a>
+        <a class="nav-mobile-next" title="P3942 将军令" href="https://FaineX.github.io/post/p3942-jiang-jun-ling/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

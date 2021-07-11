@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="。">
 <meta name="theme-color" content="#000">
-<title>NOI2018 归程 | For XeniaF</title>
+<title>P1896 [SCOI2005]互不侵犯 | For XeniaF</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1626005027399">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,7 +41,7 @@
 
 
 
-  <meta name="description" content="NOI2018 归程" />
+  <meta name="description" content="P1896 [SCOI2005]互不侵犯" />
   <meta name="keywords" content="" />
 </head>
 
@@ -312,8 +312,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://FaineX.github.io/post/noi2018-gui-cheng/">
-      NOI2018 归程
+    <a class="post-title-link" href="https://FaineX.github.io/post/p1896-scoi2005hu-bu-qin-fan/">
+      P1896 [SCOI2005]互不侵犯
     </a>
   </h1>
   <div class="post-meta">
@@ -321,28 +321,104 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-07-11 19:12:42">2021-07-11</span>
+      <span class="publish-time" data-t="2021-07-11 19:46:00">2021-07-11</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>5<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>94<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>998<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>kruskal 重构树板子题。<br>
-以海拔从高到低建树，海拔越高节点深度越深。<br>
-倍增寻找最后一个不会被水淹没的道路，直接输出子树中距离<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>最小的点的距离即可。<br>
-距离可以用 dijkstra 预处理。<br>
-这道题倍增的时候常数开到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>19</mn></mrow><annotation encoding="application/x-tex">19</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">9</span></span></span></span>就差不多了，开大了会 T。</p>
+              <p>状压DP。<br>
+分析：</p>
+<p>这是一道典型的状压<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">DP</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span>。</p>
+<p>看题目，显然这题搜索过不了，选择DP；看数据范围： <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>&lt;</mo><mo>=</mo><mi>N</mi><mo>&lt;</mo><mo>=</mo><mn>9</mn><mo separator="true">,</mo><mn>0</mn><mo>&lt;</mo><mo>=</mo><mi>K</mi><mo>&lt;</mo><mo>=</mo><mi>N</mi><mo>∗</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">1 &lt;=N &lt;=9, 0 &lt;= K &lt;= N * N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68354em;vertical-align:-0.0391em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">9</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span> 选择状压<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">DP</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span></p>
+<p>可以用一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>位的二进制数来保存每一行的状态：如果这个二进制位上是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>则放了国王，是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>则没放国王</p>
+<p>在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">DP</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span>时从第一行推到最后一行</p>
+<p>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>[</mo><mi>k</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[i][j][k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span>表示前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>行放了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>个国王第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>行的状态是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>（实际上<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>表示的是可行的状态集合中的第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个状态）的方案数</p>
+<p>预处理所有满足条件的状态：即状态中没有相邻两位都是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，这里可以用<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 3: (i&amp;̲(i&lt;&lt;1))==0'>(i&amp;(i&lt;&lt;1))==0</span>来判定（即将<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>左移一位，如果存在相邻两位都是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>的话，<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 2: 1&amp;̲1=1'>1&amp;1=1</span>，则<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 2: i&amp;̲(i&lt;&lt;1)'>i&amp;(i&lt;&lt;1)</span>就不等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>了）</p>
+<p>预处理此状态下放置的国王数目：就是统计此状态中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>的数目，方便后续转移时直接用</p>
+<p>预处理满足条件的上下两行：题目要求本格如果放国王的话，本格的左上和右上的格子不允许放国王：</p>
+<p>这是比较直观的写法：((rt[i]&amp;rt[j])==0)&amp;&amp;(((rt[i]&lt;&lt;1)&amp;rt[j])==0)&amp;&amp;(((rt[i]&gt;&gt;1)&amp;rt[j])==0)</p>
+<p>这是比较好一点的写法：((rt[i]&amp;rt[j])==0)&amp;&amp;(((rt[i]|rt[j])&amp;((rt[i]|rt[j])&lt;&lt;1))==0)</p>
+<p>解释：<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 3: (i&amp;̲(i&lt;&lt;1))==0'>(i&amp;(i&lt;&lt;1))==0</span>是我们熟悉的判定<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>状态是否存在相邻的两位都是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，因为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>都是满足条件的（即不存在相邻两位都是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，且不存在在同一位置上的数都是1），所以：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">j</th>
+<th style="text-align:center">i</th>
+<th style="text-align:center">i <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∣</mo></mrow><annotation encoding="application/x-tex">\mid</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mrel">∣</span></span></span></span> j</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">010</td>
+<td style="text-align:center">111</td>
+</tr>
+</tbody>
+</table>
+<p>那么就存在相邻两位都是1的情况了所以此时的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i,j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>不是满足条件的上下两行</p>
+<p>接下来赋初始值</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>n</mi><mi>m</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><mn>1</mn><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">dp[1][nm[i]][i]=1;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">n</span><span class="mord mathdefault">m</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">;</span></span></span></span></p>
+<p>其中i是满足条件的状态的编号</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mn>0</mn><mtext> </mtext><mi>n</mi><mo>]</mo><mo>[</mo><mn>0</mn><mo>]</mo><mo>[</mo><mn>1</mn><mo>]</mo><mo>=</mo><mn>1</mn><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">dp[0~n][0][1]=1;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord">0</span><span class="mspace nobreak"> </span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">;</span></span></span></span></p>
+<p>其中第一个可行的状态即一个国王都不放</p>
+<p>具体细节见代码</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define maxn 10
+using namespace std;
+ll n,k,lg,rt[1&lt;&lt;maxn],ok[1&lt;&lt;maxn][1&lt;&lt;maxn],nm[1&lt;&lt;maxn],dp[maxn][maxn*maxn][1&lt;&lt;maxn],ans;
+inline ll read(){
+    ll x=0,f=0;
+    char c=getchar();
+    while(!isdigit(c))
+        f|=c=='-',c=getchar();
+    while(isdigit(c))
+        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48),c=getchar();
+    return f?-x:x;
+}
+int main(){
+    n=read();k=read();
+    lg=1&lt;&lt;n;
+    for(register int i=0;i&lt;lg;++i)//找出所有满足条件的状态 
+        if((i&amp;(i&lt;&lt;1))==0)
+            rt[++rt[0]]=i;
+    for(register int i=1;i&lt;=rt[0];++i)
+        for(register int j=1;j&lt;=n;++j)
+            if(rt[i]&amp;(1&lt;&lt;(j-1)))//统计出每个状态中1的个数 
+                ++nm[i];
+    for(register int i=1;i&lt;=rt[0];++i)//附初始值 
+        dp[1][nm[i]][i]=1;
+    for(register int i=0;i&lt;=n;++i)//附初始值 
+        dp[i][0][1]=1;
+    for(register int i=1;i&lt;=rt[0];++i)
+        for(register int j=1;j&lt;=rt[0];++j)
+            if(((rt[i]&amp;rt[j])==0)&amp;&amp;(((rt[i]|rt[j])&amp;((rt[i]|rt[j])&lt;&lt;1))==0))//寻找满足条件的上下两行的状态 
+                ok[i][++ok[i][0]]=j;
+    for(register int h=2;h&lt;=n;++h)//第几行 
+        for(register int kg=1;kg&lt;=k;++kg)//放了几个国王 
+            for(register int i=1;i&lt;=rt[0];++i)//在可行状态里面找 
+                if(kg&gt;=nm[i]) 
+                    for(register int j=1;j&lt;=ok[i][0];++j)//在可行的上一行状态里面找 
+                        if(kg&gt;=nm[i]+nm[ok[i][j]])
+                            dp[h][kg][ok[i][j]]+=dp[h-1][kg-nm[ok[i][j]]][i];//状态转移 
+    for(register int i=1;i&lt;=rt[0];++i)
+        ans+=dp[n][k][i];//统计答案 
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}
+</code></pre>
 
             </div>
             
@@ -355,7 +431,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://FaineX.github.io/post/noi2018-gui-cheng/" title="NOI2018 归程">https://FaineX.github.io/post/noi2018-gui-cheng/</a>
+      <a href="https://FaineX.github.io/post/p1896-scoi2005hu-bu-qin-fan/" title="P1896 [SCOI2005]互不侵犯">https://FaineX.github.io/post/p1896-scoi2005hu-bu-qin-fan/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -369,14 +445,14 @@
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="P7109 滴水不漏" href="https://FaineX.github.io/post/p7109-di-shui-bu-lou/">P7109 滴水不漏</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="P7109 滴水不漏" href="https://FaineX.github.io/post/p7109-di-shui-bu-lou/">上一篇</a>
+        <a class="nav-pc-next" title="P1433 吃奶酪" href="https://FaineX.github.io/post/p1433-chi-nai-luo/">P1433 吃奶酪</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="P1433 吃奶酪" href="https://FaineX.github.io/post/p1433-chi-nai-luo/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="向量学习笔记" href="https://FaineX.github.io/post/xiang-liang-xue-xi-bi-ji/">向量学习笔记</a>
-        <a class="nav-mobile-next" title="向量学习笔记" href="https://FaineX.github.io/post/xiang-liang-xue-xi-bi-ji/">下一篇</a>
+        <a class="nav-pc-next" title="P2899 [USACO08JAN]Cell Phone Network G" href="https://FaineX.github.io/post/p2899-usaco08jancell-phone-network-g/">P2899 [USACO08JAN]Cell Phone Network G</a>
+        <a class="nav-mobile-next" title="P2899 [USACO08JAN]Cell Phone Network G" href="https://FaineX.github.io/post/p2899-usaco08jancell-phone-network-g/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
