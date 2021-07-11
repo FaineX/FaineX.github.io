@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://FaineX.github.io</id>
     <title>For XeniaF</title>
-    <updated>2021-07-11T12:15:07.431Z</updated>
+    <updated>2021-07-11T12:18:23.086Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://FaineX.github.io"/>
     <link rel="self" href="https://FaineX.github.io/atom.xml"/>
@@ -19,7 +19,10 @@
         <content type="html"><![CDATA[<p>关于这个博客。</p>
 <p>XeniaF 是一位非常非常菜的OIER，这个博客主要是用来记录她的一些想法或者做题记录或者做题反思的。</p>
 <ul>
-<li>此博客暂时</li>
+<li>此博客暂时不会更新题解哦OvO；</li>
+<li>上面有不少很不严谨的思路或者很显然的推论，因此在没有写“算法“或者”题解“的栏目里面，并不希望大家学习里面的任何东西；</li>
+<li>并不希望任何人联系 XeniaF ，因为她实在是太菜啦。<br>
+祝所有OIER成功qwq！</li>
 </ul>
 ]]></content>
     </entry>
