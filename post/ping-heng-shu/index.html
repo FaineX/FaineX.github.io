@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="(☆▽☆)">
 <meta name="theme-color" content="#000">
-<title>P3942 将军令 | For XeniaF</title>
+<title>平衡树 | For XeniaF</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1626065664291">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,7 +41,7 @@
 
 
 
-  <meta name="description" content="P3942 将军令" />
+  <meta name="description" content="平衡树" />
   <meta name="keywords" content="" />
 </head>
 
@@ -180,7 +180,8 @@
       <div class="sidebar-body pisces" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -225,6 +226,206 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#treap">Treap</a>
+<ul>
+<li><a href="#%E4%B8%80">一、</a></li>
+<li><a href="#%E4%BA%8C">二、</a></li>
+<li><a href="#%E4%B8%89-rotate%E6%97%8B%E8%BD%AC%E5%87%BD%E6%95%B0">三、Rotate：旋转函数</a></li>
+<li><a href="#%E5%9B%9B">四、</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -312,8 +513,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://FaineX.github.io/post/p3942-jiang-jun-ling/">
-      P3942 将军令
+    <a class="post-title-link" href="https://FaineX.github.io/post/ping-heng-shu/">
+      平衡树
     </a>
   </h1>
   <div class="post-meta">
@@ -321,110 +522,142 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-07-11 19:42:13">2021-07-11</span>
+      <span class="publish-time" data-t="2021-07-11 21:25:12">2021-07-11</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>461<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>724<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>典型的树形<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">DP</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span>。</p>
-<p>具体思路参考题解</p>
-<p>注意：</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">dfs2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span><span class="mord">2</span></span></span></span>中，开始一直觉得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">pre</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span></span></span></span>没有用，用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mo>[</mo><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">fa[x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>不就好了吗？反正你要推到的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>不是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的儿子吗！</p>
-<p>结果一直<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>25</mn><mi mathvariant="normal">分</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">25分......</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mord cjk_fallback">分</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span></p>
-<p>其实呢，在这个搜索中，它的起点不是1可以是任意一个节点</p>
-<p>如果还按开始的那个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mo>[</mo><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">fa[x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>的话肯定是不行的</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mo>[</mo><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">fa[x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span>成立仅限于搜索过程是以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>为节点的深度优先搜索</p>
-<p>所以一定要记录<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">pre</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span></span></span></span></p>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-#define ll long long 
-#define maxn 200005
-using namespace std;
-ll n,k,t,hd[maxn],tt=0,u,v,dh[maxn],fa[maxn],vit[maxn],ans;
-struct Node{
-    ll to,nx;
-}e[maxn&lt;&lt;1];
-struct node{
-    ll fm,dp;
-}q[maxn&lt;&lt;1];
-inline ll read(){
-    ll x=0,f=0;
-    char c=getchar();
-    while(!isdigit(c))
-        f|=c=='-',c=getchar();
-    while(isdigit(c))
-        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48),c=getchar();
-    return f?-x:x;
-}
-inline void add(ll u,ll v){
-    e[++tt].to=v;
-    e[tt].nx=hd[u];
-    hd[u]=tt;
-}
-inline void dfs1(ll x){
-    for(register int i=hd[x];i;i=e[i].nx){
-        ll u=e[i].to;
-        if(!dh[u]){
-            fa[u]=x;
-            dh[u]=dh[x]+1;
-            dfs1(u);    
-        }
-    }
-}
-inline ll find(ll x){
-    ll sp=1;
-    while(sp&lt;=k){
-        ++sp;
-        x=fa[x];
-    }
-    return x;
-}
-inline void dfs2(ll x,ll pre,ll sp){
-    vit[x]=1;
-    if(sp==k)    return;
-    for(register int i=hd[x];i;i=e[i].nx){
-        ll u=e[i].to;
-        if(u!=pre)    dfs2(u,x,sp+1);
-    }
-}
-inline bool cmp(node a,node b){
-    return a.dp&gt;b.dp;
-}
-int main(){
-    n=read();k=read();t=read();
-    for(register int i=1;i&lt;n;++i){
-        u=read();v=read();
-        add(u,v);add(v,u);
-    }
-    dh[1]=1;fa[1]=1;dfs1(1);
-    for(register int i=1;i&lt;=n;++i){
-        q[i].fm=i;
-        q[i].dp=dh[i];
-    }
-    sort(q+1,q+n+1,cmp);
-    for(register int i=1;i&lt;=n;++i){
-        node xx=q[i];
-        int x=xx.fm;
-        if(vit[x])    continue;
-        ++ans;
-        ll y=find(x);
-        dfs2(y,0,0);
-    }
-    printf(&quot;%lld\n&quot;,ans);
-    return 0;
+              <p>这是一篇个人笔记，不希望大家学习。</p>
+<h3 id="treap">Treap</h3>
+<p>Treap是一个非常非常好写<s>只是略微看运气</s>的平衡树写法。<br>
+先说一句，这篇随笔是写个 XF 看的啦，不是属于正式的算法介绍，因此<s>你们看不看的懂我也不能保证啦</s></p>
+<h4 id="一">一、</h4>
+<p>平衡树基于二叉搜索树，而对于一颗二叉搜索树，上面的所有节点均满足：左儿子<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&lt;</mo></mrow><annotation encoding="application/x-tex">&lt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span></span></span></span>节点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&lt;</mo></mrow><annotation encoding="application/x-tex">&lt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span></span></span></span>右儿子，因此任意一颗平衡树一样的也有这样的性质。</p>
+<h4 id="二">二、</h4>
+<p>为了降低时间复杂度，Treap总是先遍历优先度高的节点，确定优先度的方法就是在建立一个新节点时，对它随机一个新节点。<br>
+因此，在每一次删除或者加入操作时，我们也要维护它的这个性质，这就要使用 rotate 了。</p>
+<h4 id="三-rotate旋转函数">三、Rotate：旋转函数</h4>
+<p>可以选择左旋或者右旋，每次都将改变右/左儿子与其父亲的深度关系。<br>
+<s>根据代码模拟下不就好了嘛，放什么图啊</s></p>
+<pre><code class="language-cpp">inline void rotate(ll &amp;id,ll d){//direction
+    ll tmp=ch[id][d^1];//这里解释一下：d^1可以使0变1，1变0
+    ch[id][d^1]=ch[tmp][d];
+    ch[tmp][d]=id;
+    id=tmp;
+    pushup(id);
+    pushup(ch[id][d]);
 }
 </code></pre>
+<h4 id="四">四、</h4>
+<p>新建节点：</p>
+<pre><code class="language-cpp">inline ll New(ll x){
+    val[++tot]=x;
+    dat[tot]=rand();
+    size[tot]=cnt[tot]=1;
+    return tot;   
+}
+inline void build(){
+    root=New(-INF),ch[root][1]=New(INF);
+    pushup(root);
+}
+inline void insert(ll &amp;id,ll v){
+    if(!id){
+        id=New(v);
+        return;
+    }
+    if(val[id]==v)  ++cnt[id];
+    else{
+        kk=v&lt;val[id]?0:1;
+        insert(ch[id][kk],v);
+        if(dat[ch[id][kk]]&gt;dat[id])
+            rotate(id,kk^1);
+    }
+    pushup(id);
+}
+</code></pre>
+<p>更新信息：</p>
+<pre><code class="language-cpp">inline void pushup(ll x){
+    size[x]=size[ch[x][1]]+size[ch[x][0]]+cnt[x];
+}
+</code></pre>
+<p>删除节点：</p>
+<pre><code class="language-cpp">inline void remove(ll &amp;id,ll x){
+    if(!id)             return;
+    else{
+        if(val[id]==x){
+            if(cnt[id]&gt;1){
+                --cnt[id];
+                pushup(id);
+                return;
+            }   
+            else{
+                if(ch[id][0]||ch[id][1]){
+                    if(!ch[id][1]||dat[ch[id][0]]&gt;dat[ch[id][1]])
+                        rotate(id,1),remove(ch[id][1],x);
+                    else   
+                        rotate(id,0),remove(ch[id][0],x);
+                    pushup(id);
+                }
+                else    id=0;
+                return;
+            }
+        }
+    }   
+    kk=x&lt;val[id]?0:1;
+    remove(ch[id][kk],x);
+    pushup(id);   
+}
+</code></pre>
+<p>查分/查排名</p>
+<pre><code class="language-cpp">
+inline ll getrank(ll id,ll x){
+    if(!id)
+        return -INF;
+    if(val[id]==x)
+        return size[ch[id][0]]+1;
+    if(x&lt;val[id])
+        return getrank(ch[id][0],x);
+    else    
+        return getrank(ch[id][1],x)+size[ch[id][0]]+cnt[id];
+}
+
+inline ll getmark(ll id,ll x){
+    if(!id)     return INF;
+    if(x&lt;=size[ch[id][0]])
+        return getmark(ch[id][0],x);
+    if(x&lt;=size[ch[id][0]]+cnt[id])
+        return val[id];
+    return getmark(ch[id][1],x-size[ch[id][0]]-cnt[id]);
+}   
+</code></pre>
+<p>查前驱</p>
+<pre><code class="language-cpp">inline ll pre(ll x){
+    ll id=root,prev;
+    while(id){
+        if(val[id]&lt;x)
+            prev=val[id],id=ch[id][1];
+        else
+            id=ch[id][0];
+    }
+    return prev;
+}
+</code></pre>
+<blockquote>
+<p>这里如果当前节点的值比要寻找的值小的话，根据二叉搜索树的规则，应该选择往右边找，是否有更接近的值；如果大于的话，当然往左边找啦</p>
+</blockquote>
+<p>后继把所有符号反过来就好啦。</p>
 
             </div>
             
@@ -437,7 +670,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://FaineX.github.io/post/p3942-jiang-jun-ling/" title="P3942 将军令">https://FaineX.github.io/post/p3942-jiang-jun-ling/</a>
+      <a href="https://FaineX.github.io/post/ping-heng-shu/" title="平衡树">https://FaineX.github.io/post/ping-heng-shu/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -450,15 +683,11 @@ int main(){
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="P2899 [USACO08JAN]Cell Phone Network G" href="https://FaineX.github.io/post/p2899-usaco08jancell-phone-network-g/">P2899 [USACO08JAN]Cell Phone Network G</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="P2899 [USACO08JAN]Cell Phone Network G" href="https://FaineX.github.io/post/p2899-usaco08jancell-phone-network-g/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="区间DP" href="https://FaineX.github.io/post/qu-jian-dp/">区间DP</a>
-        <a class="nav-mobile-next" title="区间DP" href="https://FaineX.github.io/post/qu-jian-dp/">下一篇</a>
+        <a class="nav-pc-next" title="Hi！" href="https://FaineX.github.io/post/hi/">Hi！</a>
+        <a class="nav-mobile-next" title="Hi！" href="https://FaineX.github.io/post/hi/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

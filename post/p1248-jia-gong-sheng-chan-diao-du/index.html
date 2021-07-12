@@ -9,7 +9,7 @@
 <meta name="description" content="(☆▽☆)">
 <meta name="theme-color" content="#000">
 <title>P1248 加工生产调度 | For XeniaF</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1626009844116">
+<link rel="shortcut icon" href="/favicon.ico?v=1626065664291">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -200,7 +200,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">15</span>
+        <span class="site-item-stat-count">16</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -930,6 +930,130 @@ int main(){
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://FaineX.github.io/post/ping-heng-shu/"" data-c="
+          &lt;p&gt;这是一篇个人笔记，不希望大家学习。&lt;/p&gt;
+&lt;h3 id=&#34;treap&#34;&gt;Treap&lt;/h3&gt;
+&lt;p&gt;Treap是一个非常非常好写&lt;s&gt;只是略微看运气&lt;/s&gt;的平衡树写法。&lt;br&gt;
+先说一句，这篇随笔是写个 XF 看的啦，不是属于正式的算法介绍，因此&lt;s&gt;你们看不看的懂我也不能保证啦&lt;/s&gt;&lt;/p&gt;
+&lt;h4 id=&#34;一&#34;&gt;一、&lt;/h4&gt;
+&lt;p&gt;平衡树基于二叉搜索树，而对于一颗二叉搜索树，上面的所有节点均满足：左儿子&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;&amp;lt;&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.5782em;vertical-align:-0.0391em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;&amp;lt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;节点&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;&amp;lt;&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.5782em;vertical-align:-0.0391em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;&amp;lt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;右儿子，因此任意一颗平衡树一样的也有这样的性质。&lt;/p&gt;
+&lt;h4 id=&#34;二&#34;&gt;二、&lt;/h4&gt;
+&lt;p&gt;为了降低时间复杂度，Treap总是先遍历优先度高的节点，确定优先度的方法就是在建立一个新节点时，对它随机一个新节点。&lt;br&gt;
+因此，在每一次删除或者加入操作时，我们也要维护它的这个性质，这就要使用 rotate 了。&lt;/p&gt;
+&lt;h4 id=&#34;三-rotate旋转函数&#34;&gt;三、Rotate：旋转函数&lt;/h4&gt;
+&lt;p&gt;可以选择左旋或者右旋，每次都将改变右/左儿子与其父亲的深度关系。&lt;br&gt;
+&lt;s&gt;根据代码模拟下不就好了嘛，放什么图啊&lt;/s&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;inline void rotate(ll &amp;amp;id,ll d){//direction
+    ll tmp=ch[id][d^1];//这里解释一下：d^1可以使0变1，1变0
+    ch[id][d^1]=ch[tmp][d];
+    ch[tmp][d]=id;
+    id=tmp;
+    pushup(id);
+    pushup(ch[id][d]);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;四&#34;&gt;四、&lt;/h4&gt;
+&lt;p&gt;新建节点：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;inline ll New(ll x){
+    val[++tot]=x;
+    dat[tot]=rand();
+    size[tot]=cnt[tot]=1;
+    return tot;   
+}
+inline void build(){
+    root=New(-INF),ch[root][1]=New(INF);
+    pushup(root);
+}
+inline void insert(ll &amp;amp;id,ll v){
+    if(!id){
+        id=New(v);
+        return;
+    }
+    if(val[id]==v)  ++cnt[id];
+    else{
+        kk=v&amp;lt;val[id]?0:1;
+        insert(ch[id][kk],v);
+        if(dat[ch[id][kk]]&amp;gt;dat[id])
+            rotate(id,kk^1);
+    }
+    pushup(id);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;更新信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;inline void pushup(ll x){
+    size[x]=size[ch[x][1]]+size[ch[x][0]]+cnt[x];
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除节点：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;inline void remove(ll &amp;amp;id,ll x){
+    if(!id)             return;
+    else{
+        if(val[id]==x){
+            if(cnt[id]&amp;gt;1){
+                --cnt[id];
+                pushup(id);
+                return;
+            }   
+            else{
+                if(ch[id][0]||ch[id][1]){
+                    if(!ch[id][1]||dat[ch[id][0]]&amp;gt;dat[ch[id][1]])
+                        rotate(id,1),remove(ch[id][1],x);
+                    else   
+                        rotate(id,0),remove(ch[id][0],x);
+                    pushup(id);
+                }
+                else    id=0;
+                return;
+            }
+        }
+    }   
+    kk=x&amp;lt;val[id]?0:1;
+    remove(ch[id][kk],x);
+    pushup(id);   
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查分/查排名&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;
+inline ll getrank(ll id,ll x){
+    if(!id)
+        return -INF;
+    if(val[id]==x)
+        return size[ch[id][0]]+1;
+    if(x&amp;lt;val[id])
+        return getrank(ch[id][0],x);
+    else    
+        return getrank(ch[id][1],x)+size[ch[id][0]]+cnt[id];
+}
+
+inline ll getmark(ll id,ll x){
+    if(!id)     return INF;
+    if(x&amp;lt;=size[ch[id][0]])
+        return getmark(ch[id][0],x);
+    if(x&amp;lt;=size[ch[id][0]]+cnt[id])
+        return val[id];
+    return getmark(ch[id][1],x-size[ch[id][0]]-cnt[id]);
+}   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查前驱&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;inline ll pre(ll x){
+    ll id=root,prev;
+    while(id){
+        if(val[id]&amp;lt;x)
+            prev=val[id],id=ch[id][1];
+        else
+            id=ch[id][0];
+    }
+    return prev;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里如果当前节点的值比要寻找的值小的话，根据二叉搜索树的规则，应该选择往右边找，是否有更接近的值；如果大于的话，当然往左边找啦&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;后继把所有符号反过来就好啦。&lt;/p&gt;
+">平衡树</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://FaineX.github.io/post/hi/"" data-c="
           &lt;p&gt;关于这个博客。&lt;/p&gt;
 &lt;p&gt;XeniaF 是一位非常非常菜的OIER，这个博客主要是用来记录她的一些想法或者做题记录或者做题反思的。&lt;/p&gt;
@@ -937,6 +1061,7 @@ int main(){
 &lt;li&gt;XeniaF 于2021.7.11来到了这里！&lt;/li&gt;
 &lt;li&gt;此博客暂时不会更新题解哦OvO；&lt;/li&gt;
 &lt;li&gt;上面有不少很不严谨的思路或者很显然的推论，因此在没有写“算法“或者”题解“的栏目里面，并不希望大家学习里面的任何东西；&lt;/li&gt;
+&lt;li&gt;里面可能含有少许奇奇怪怪的言论，大家可以忽略。&lt;/li&gt;
 &lt;li&gt;并不希望任何人联系 XeniaF ，因为她实在是太菜啦。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;★,°&lt;/em&gt;:.☆(￣▽￣)/$:&lt;em&gt;.°★&lt;/em&gt;&lt;/p&gt;
