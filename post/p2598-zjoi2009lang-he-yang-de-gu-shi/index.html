@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="(☆▽☆)">
 <meta name="theme-color" content="#000">
-<title>P1433 吃奶酪 | For XeniaF</title>
+<title>P2598 [ZJOI2009]狼和羊的故事 | For XeniaF</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1626095009673">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,7 +41,7 @@
 
 
 
-  <meta name="description" content="P1433 吃奶酪" />
+  <meta name="description" content="P2598 [ZJOI2009]狼和羊的故事" />
   <meta name="keywords" content="" />
 </head>
 
@@ -312,8 +312,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://FaineX.github.io/post/p1433-chi-nai-luo/">
-      P1433 吃奶酪
+    <a class="post-title-link" href="https://FaineX.github.io/post/p2598-zjoi2009lang-he-yang-de-gu-shi/">
+      P2598 [ZJOI2009]狼和羊的故事
     </a>
   </h1>
   <div class="post-meta">
@@ -321,118 +321,158 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-07-11 19:56:56">2021-07-11</span>
+      <span class="publish-time" data-t="2021-07-12 19:48:12">2021-07-12</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>4<span class="language" data-lan="minute">分钟</span></span>
+      <span>5<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>621<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>889<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>状压DP。</p>
-<p>初见：这不就是跟<a href="https://www.luogu.com.cn/problem/P2831">愤怒的小鸟</a>和<a href="https://www.cnblogs.com/Ateisti/p/6039165.html">制作武器</a>差不多吗？</p>
-<p>（代码）</p>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-#define ll long long
-using namespace std;
-ll n,lg;
-double x[15],y[15],f[1&lt;&lt;15];
-inline ll read(){
-    ll x=0,f=0;
-    char c=getchar();
-    while(!isdigit(c))
-        f|=c=='-',c=getchar();
-    while(isdigit(c))
-        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48),c=getchar();
-    return f?-x:x;
-}
-inline double solve(ll u,ll v){
-    double tot=0;
-    tot=fabs(x[u]-x[v])*fabs(x[u]-x[v])+fabs(y[u]-y[v])*fabs(y[u]-y[v]);
-    tot=sqrt(tot);
-    return tot;
-}
-int main(){
-    n=read();
-    for(register int i=1;i&lt;=n;++i)
-        scanf(&quot;%lf%lf&quot;,&amp;x[i],&amp;y[i]);
-    lg=1&lt;&lt;n;
-    for(register int i=0;i&lt;lg;++i)
-        f[i]=(double)0x3f3f3f3f;
-    for(register int i=1;i&lt;=n;++i)
-        f[1&lt;&lt;(i-1)]=solve(0,i);
-    for(register int i=0;i&lt;lg;++i)
-        for(register int j=1;j&lt;=n;++j)
-            if(i&amp;(1&lt;&lt;(j-1)))
-                for(register int k=1;k&lt;=n;++k)
-                    if((k!=j)&amp;&amp;!(i&amp;(1&lt;&lt;(k-1))))
-                        f[i^(1&lt;&lt;(k-1))]=min(f[i^(1&lt;&lt;(k-1))],f[i]+solve(j,k));
-    cout&lt;&lt;fixed&lt;&lt;setprecision(2)&lt;&lt;f[lg-1];
-    return 0;
-}
+              <p>网络最大流。</p>
+<blockquote>
+<p>前言：上课<s>滑水</s>，晚上做题一脸蒙，感谢隔壁的帮助（）</p>
+</blockquote>
+<p>修建栏杆相当于是割断了狼和羊之间的联系方式，即割掉了一条边。<strong>在网格图中，建边的方式为由现在所在的格子向周围四个方向的格子连一条边。</strong>（理论上建立反向边比较赘余，但是因为在跑 Dinic 过程中涉及<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>（本条边）和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>∧</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i \land 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>（反向边）的使用，所以还是建上吧！)因此，在网络流中，要求割最少的边，使得网络不流通，这不就是<strong>网络流最小割问题</strong>嘛？</p>
+<blockquote>
+<p>最小割<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span></span></span></span>最大流</p>
+</blockquote>
+<p>所以在建图以后直接跑 Dinic 就好了。</p>
+<p>当当当当然，只知道建立网格图的网络流肯定是不够的，狼和羊之间的关系应该怎么处理呢？</p>
+<blockquote>
+<p>最小割问题指的是，割去一些边之后，源点到汇点不再流通。</p>
+</blockquote>
+<p>这里要求一定要把狼和羊严格隔开，距离无法隔开他们，也就是说即使他们隔着很多个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>的格子，也是可以互相到达的！这就不满足题目条件了。</p>
+<p>应该就很明显了，这道题就是裸的网络流最小割问题欸。</p>
+<hr>
+<p>总结：</p>
+<ul>
+<li>二维图中用一个数字存储一个坐标：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>∗</mo><mi>m</mi><mo>+</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">(i-1)*m+j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span></li>
+<li>因为是二，维，图，所以建图的数组要开<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mi>n</mi><mo>∗</mo><mi>m</mi><mi>a</mi><mi>x</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">maxn*maxn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mord mathdefault">n</span></span></span></span>！</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span></span></span></span>的初始值应该赋值为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，因为你在跑 Dinic 的时候，以下这一段容易出事：</li>
+</ul>
+<pre><code class="language-cpp">ll fj=dfs(to,min(e[i].dis,limit));
+e[i].dis-=fj;
+e[i^1].dis+=fj;
 </code></pre>
-<p>错法和<a href="https://www.luogu.com.cn/blog/29243/chi-nai-lao">这个题解</a>一模一样（详情也参照题解）</p>
-<p>（AC代码）</p>
+<ul>
+<li>加边一定要加反向边啊啊啊！</li>
+</ul>
 <pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
 #define ll long long
+#define maxn 42100
+#define INF 1000000000
 using namespace std;
-ll n,lg,top,q[16];
-double x[16],y[16],f[16][1&lt;&lt;16],ans;
+ll n,m;
+ll q[maxn],l,r,d[maxn];
+ll a[110][110];
+ll ans;
+ll s,t;
+ll cnt=1,hd[maxn];
+ll fx[5][3]={{0,1},{0,-1},{1,0},{-1,0}};
+struct Node{
+    ll nx,to,dis;
+}e[maxn*4];
+
 inline ll read(){
-    ll x=0,f=0;
-    char c=getchar();
+    ll x=0,f=0;char c=getchar();
     while(!isdigit(c))
         f|=c=='-',c=getchar();
     while(isdigit(c))
         x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48),c=getchar();
     return f?-x:x;
 }
-inline double solve(ll u,ll v){
-    double tot=0;
-    tot=fabs(x[u]-x[v])*fabs(x[u]-x[v])+fabs(y[u]-y[v])*fabs(y[u]-y[v]);
-    tot=sqrt(tot);
-    return tot;
+
+inline ll sm(ll u,ll v){
+    return (u-1)*m+v;
 }
+
+inline void add(ll u,ll v,ll w){
+    e[++cnt].to=v;
+    e[cnt].dis=w;
+    e[cnt].nx=hd[u];
+    hd[u]=cnt;
+}
+
+inline ll bfs(){
+    memset(d,0,sizeof(d));
+    l=r=1;
+    q[l]=s;
+    d[s]=1;
+    while(l&lt;=r){
+        ll u=q[l++];
+        for(register int i=hd[u];i;i=e[i].nx){
+            ll to=e[i].to;
+            if(!d[to]&amp;&amp;e[i].dis){
+                d[to]=d[u]+1;
+                q[++r]=to;
+            }
+        }
+    }
+    return d[t];
+}
+
+inline ll dfs(ll u,ll limit){
+    if(u==t)
+        return limit;
+    ll flow=0;
+    for(register int i=hd[u];i&amp;&amp;limit;i=e[i].nx){
+        ll to=e[i].to;
+        if(e[i].dis&amp;&amp;d[to]==d[u]+1){
+            ll fj=dfs(to,min(e[i].dis,limit));
+            e[i].dis-=fj;
+            e[i^1].dis+=fj;
+            limit-=fj;
+            flow+=fj;
+        }
+    }
+    if(!flow)   d[u]=0;
+    return flow;
+}
+
 int main(){
-    memset(f,127,sizeof(f));
-    n=read();
+    n=read();m=read();
+    s=n*m*2+1,t=n*m*2+2;
+    for(register int i=1;i&lt;=n;++i)
+        for(register int j=1;j&lt;=m;++j)
+            a[i][j]=read();
     for(register int i=1;i&lt;=n;++i){
-        scanf(&quot;%lf%lf&quot;,&amp;x[i],&amp;y[i]);
-        f[i][1&lt;&lt;(i-1)]=solve(0,i);
+        for(register int j=1;j&lt;=m;++j){
+            if(a[i][j]==2){
+                add(s,sm(i,j),INF);
+                add(sm(i,j),s,0);   
+
+            }
+            else if(a[i][j]==1){
+                add(sm(i,j),t,INF);
+                add(t,sm(i,j),0);
+            }
+        }
     }        
-    lg=1&lt;&lt;n;
-    for(register int i=0;i&lt;lg;++i){
-        top=0;
-        for(register int j=1;j&lt;=n;++j)
-            if(!(i&amp;(1&lt;&lt;(j-1))))
-                q[++top]=j;
-        for(register int j=1;j&lt;=n;++j)
-            if(abs(f[j][i]-f[0][0])&gt;=0.0000001)
-                for(register int k=1;k&lt;=top;++k)
-                    f[q[k]][i^(1&lt;&lt;(q[k]-1))]=min(f[q[k]][i^(1&lt;&lt;(q[k]-1))],f[j][i]+solve(q[k],j));
-    }        
-    ans=f[0][0];
     for(register int i=1;i&lt;=n;++i)
-        ans=min(ans,f[i][lg-1]);
-    printf(&quot;%.2lf\n&quot;,ans);
+        for(register int j=1;j&lt;=m;++j)
+            for(register int k=0;k&lt;=3;++k){
+                ll dx=i+fx[k][0];
+                ll dy=j+fx[k][1];
+                if(dx&gt;=1&amp;&amp;dx&lt;=n&amp;&amp;dy&gt;=1&amp;&amp;dy&lt;=m)
+                    add(sm(i,j),sm(dx,dy),1),
+                    add(sm(dx,dy),sm(i,j),0);
+            }       
+    while(bfs())
+        ans+=dfs(s,INF);
+    printf(&quot;%lld\n&quot;,ans);
     return 0;
 }
 </code></pre>
-<p>double赋最大值就赋<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>127</mn></mrow><annotation encoding="application/x-tex">127</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">7</span></span></span></span></p>
-<p>值得注意的是，ans如果赋值成<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>127</mn></mrow><annotation encoding="application/x-tex">127</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">7</span></span></span></span>会错一个点？</p>
-<p>经测试，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mn>0</mn><mo>]</mo><mo>[</mo><mn>0</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">f[0][0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span></span></span></span>的值确实要比<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>127</mn></mrow><annotation encoding="application/x-tex">127</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">7</span></span></span></span>大很多</p>
-<pre><code class="language-cpp">memset(f,127,sizeof(f));
-</code></pre>
-<p>这条语句中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span>数组被赋值成为了1.38242e+306</p>
 
             </div>
             
@@ -445,7 +485,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://FaineX.github.io/post/p1433-chi-nai-luo/" title="P1433 吃奶酪">https://FaineX.github.io/post/p1433-chi-nai-luo/</a>
+      <a href="https://FaineX.github.io/post/p2598-zjoi2009lang-he-yang-de-gu-shi/" title="P2598 [ZJOI2009]狼和羊的故事">https://FaineX.github.io/post/p2598-zjoi2009lang-he-yang-de-gu-shi/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -459,14 +499,14 @@ int main(){
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="P1270 “访问”美术馆" href="https://FaineX.github.io/post/p1270-fang-wen-mei-zhu-guan/">P1270 “访问”美术馆</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="P1270 “访问”美术馆" href="https://FaineX.github.io/post/p1270-fang-wen-mei-zhu-guan/">上一篇</a>
+        <a class="nav-pc-next" title="P2774 方格取数问题" href="https://FaineX.github.io/post/p2774-fang-ge-qu-shu-wen-ti/">P2774 方格取数问题</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="P2774 方格取数问题" href="https://FaineX.github.io/post/p2774-fang-ge-qu-shu-wen-ti/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="P1896 [SCOI2005]互不侵犯" href="https://FaineX.github.io/post/p1896-scoi2005hu-bu-qin-fan/">P1896 [SCOI2005]互不侵犯</a>
-        <a class="nav-mobile-next" title="P1896 [SCOI2005]互不侵犯" href="https://FaineX.github.io/post/p1896-scoi2005hu-bu-qin-fan/">下一篇</a>
+        <a class="nav-pc-next" title="平衡树" href="https://FaineX.github.io/post/ping-heng-shu/">平衡树</a>
+        <a class="nav-mobile-next" title="平衡树" href="https://FaineX.github.io/post/ping-heng-shu/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

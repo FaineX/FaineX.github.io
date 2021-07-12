@@ -9,7 +9,7 @@
 <meta name="description" content="(☆▽☆)">
 <meta name="theme-color" content="#000">
 <title>For XeniaF</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1626065664291">
+<link rel="shortcut icon" href="/favicon.ico?v=1626095009673">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -184,7 +184,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">16</span>
+        <span class="site-item-stat-count">18</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -232,7 +232,7 @@
   <div class="archive-timeline-box">
     <div class="archive-timeline-title">
       
-        <h2 class="language" data-lan="archives" data-count="16">非常好！目前共计16篇日志，继续努力！</h2>
+        <h2 class="language" data-lan="archives" data-count="18">非常好！目前共计18篇日志，继续努力！</h2>
       
     </div>
     
@@ -242,6 +242,32 @@
           <h2 class="tag-year">2021</h2>
         </div>    
         
+      
+      <a href="https://FaineX.github.io/post/p2774-fang-ge-qu-shu-wen-ti/">
+        <div class="motion-warpper tag-archive-node">
+          <div class="tag-node">
+            <h1>
+              07-12
+              <small>P2774 方格取数问题</small>
+            </h1>
+          </div>  
+      </div>
+      </a>
+    
+      
+      
+      <a href="https://FaineX.github.io/post/p2598-zjoi2009lang-he-yang-de-gu-shi/">
+        <div class="motion-warpper tag-archive-node">
+          <div class="tag-node">
+            <h1>
+              07-12
+              <small>P2598 [ZJOI2009]狼和羊的故事</small>
+            </h1>
+          </div>  
+      </div>
+      </a>
+    
+      
       
       <a href="https://FaineX.github.io/post/ping-heng-shu/">
         <div class="motion-warpper tag-archive-node">
@@ -703,6 +729,264 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://FaineX.github.io/post/p2774-fang-ge-qu-shu-wen-ti/"" data-c="
+          &lt;p&gt;网络流最小割问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;做了狼和羊后一脸蒙的被拉去做了这道题。开局继续蒙。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;s&gt;反正上课也没有听懂&lt;/s&gt;，只依稀记得一个什么奇数点放一边，偶数点放一边，建立二分图。&lt;br&gt;
+建完边之后，考虑继续连边，将所有可能产生影响的边连接在一起，这里只要把黑点连向白点就可以了。&lt;br&gt;
+因为最开始在构建这个网络流的时候，将&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;S&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;-&amp;gt;黑-&amp;gt;白-&amp;gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;T&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.13889em;&#34;&gt;T&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，白连向黑你想干什么啊，河水逆流？&lt;/p&gt;
+&lt;p&gt;然后然后如果只看&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;j&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.85396em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05724em;&#34;&gt;j&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;的奇偶性的话肯定会出问题，因为你就相当于不会影响你上下的格子啦。&lt;/p&gt;
+&lt;p&gt;这道题暂时没有出任何问题！撒花～&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+#define ll int
+#define INF 1000000000
+#define maxn 43200
+using namespace std;
+ll m,n,a[110][110],cnt=1,hd[maxn];
+ll s,t,l,r;
+struct Node{
+    ll nx,to,dis;
+}e[maxn&amp;lt;&amp;lt;2];
+ll ff[5][4]={{0,1},{0,-1},{1,0},{-1,0}};
+ll d[maxn],ans,q[maxn];
+ll sum;
+
+inline ll read(){
+    ll x=0,f=0;char c=getchar();
+    while(!isdigit(c))
+        f|c==&#39;-&#39;,c=getchar();
+    while(isdigit(c))
+        x=(x&amp;lt;&amp;lt;1)+(x&amp;lt;&amp;lt;3)+(c^48),c=getchar();
+    return f?-x:x;
+}
+
+inline ll sm(ll u,ll v){
+    return (u-1)*m+v;
+}
+
+inline void add(ll u,ll v,ll w){
+    e[++cnt].to=v;
+    e[cnt].nx=hd[u];
+    e[cnt].dis=w;
+    hd[u]=cnt;
+}
+
+inline ll bfs(){
+    memset(d,0,sizeof(d));
+    l=r=1;
+    q[l]=s;
+    d[s]=1;
+    while(l&amp;lt;=r){
+        ll u=q[l++];
+        for(register int i=hd[u];i;i=e[i].nx){
+            ll to=e[i].to;
+            if(e[i].dis&amp;amp;&amp;amp;!d[to]){
+                q[++r]=to;
+                d[to]=d[u]+1;
+            }
+        }
+
+    }
+    return d[t];
+}
+
+inline ll dfs(ll u,ll limit){
+    if(u==t)    return limit;
+    ll flow=0;
+    for(register int i=hd[u];i&amp;amp;&amp;amp;limit;i=e[i].nx){
+        ll to=e[i].to;
+        if(e[i].dis&amp;amp;&amp;amp;d[to]==d[u]+1){
+            ll fj=dfs(to,min(limit,e[i].dis));
+            e[i].dis-=fj;
+            e[i^1].dis+=fj;
+            flow+=fj;
+            limit-=fj;
+        }       
+    }
+    if(!flow)   d[u]=0;
+    return flow;
+}
+
+int main(){
+    n=read();m=read();
+    s=n*m*2+1;t=n*m*2+2;
+    for(register int i=1;i&amp;lt;=n;++i)
+        for(register int j=1;j&amp;lt;=m;++j)
+            a[i][j]=read(),sum+=a[i][j];
+    for(register int i=1;i&amp;lt;=n;++i)
+        for(register int j=1;j&amp;lt;=m;++j)
+            if((i+j)&amp;amp;1){
+                add(s,sm(i,j),a[i][j]);
+                add(sm(i,j),s,0);
+            }
+            else{
+                add(sm(i,j),t,a[i][j]);
+                add(t,sm(i,j),0);
+            }
+    for(register int i=1;i&amp;lt;=n;++i)
+        for(register int j=1;j&amp;lt;=m;++j)
+            if((i+j)&amp;amp;1){
+                for(register int k=0;k&amp;lt;=3;++k){
+                    ll dx=i+ff[k][0];
+                    ll dy=j+ff[k][1];
+                    if(dx&amp;gt;=1&amp;amp;&amp;amp;dx&amp;lt;=n&amp;amp;&amp;amp;dy&amp;gt;=1&amp;amp;&amp;amp;dy&amp;lt;=m)
+                        add(sm(i,j),sm(dx,dy),INF),
+                        add(sm(dx,dy),sm(i,j),0);
+                }    
+            }
+            
+    while(bfs())
+        ans+=dfs(s,INF);
+    printf(&amp;quot;%d\n&amp;quot;,sum-ans);
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">P2774 方格取数问题</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://FaineX.github.io/post/p2598-zjoi2009lang-he-yang-de-gu-shi/"" data-c="
+          &lt;p&gt;网络最大流。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;前言：上课&lt;s&gt;滑水&lt;/s&gt;，晚上做题一脸蒙，感谢隔壁的帮助（）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;修建栏杆相当于是割断了狼和羊之间的联系方式，即割掉了一条边。&lt;strong&gt;在网格图中，建边的方式为由现在所在的格子向周围四个方向的格子连一条边。&lt;/strong&gt;（理论上建立反向边比较赘余，但是因为在跑 Dinic 过程中涉及&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.65952em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;（本条边）和&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;∧&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;i \land 1&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.65952em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;∧&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;（反向边）的使用，所以还是建上吧！)因此，在网络流中，要求割最少的边，使得网络不流通，这不就是&lt;strong&gt;网络流最小割问题&lt;/strong&gt;嘛？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;最小割&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;=&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.36687em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;=&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;最大流&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以在建图以后直接跑 Dinic 就好了。&lt;/p&gt;
+&lt;p&gt;当当当当然，只知道建立网格图的网络流肯定是不够的，狼和羊之间的关系应该怎么处理呢？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;最小割问题指的是，割去一些边之后，源点到汇点不再流通。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这里要求一定要把狼和羊严格隔开，距离无法隔开他们，也就是说即使他们隔着很多个&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;0&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;的格子，也是可以互相到达的！这就不满足题目条件了。&lt;/p&gt;
+&lt;p&gt;应该就很明显了，这道题就是裸的网络流最小割问题欸。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;总结：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;二维图中用一个数字存储一个坐标：&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mo&gt;∗&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;(i-1)*m+j&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;∗&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.66666em;vertical-align:-0.08333em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.85396em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05724em;&#34;&gt;j&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;因为是二，维，图，所以建图的数组要开&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;∗&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;maxn*maxn&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.46528em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;∗&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.43056em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;！&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;cnt&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.61508em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;的初始值应该赋值为&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;1&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，因为你在跑 Dinic 的时候，以下这一段容易出事：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;ll fj=dfs(to,min(e[i].dis,limit));
+e[i].dis-=fj;
+e[i^1].dis+=fj;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;加边一定要加反向边啊啊啊！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+#define ll long long
+#define maxn 42100
+#define INF 1000000000
+using namespace std;
+ll n,m;
+ll q[maxn],l,r,d[maxn];
+ll a[110][110];
+ll ans;
+ll s,t;
+ll cnt=1,hd[maxn];
+ll fx[5][3]={{0,1},{0,-1},{1,0},{-1,0}};
+struct Node{
+    ll nx,to,dis;
+}e[maxn*4];
+
+inline ll read(){
+    ll x=0,f=0;char c=getchar();
+    while(!isdigit(c))
+        f|=c==&#39;-&#39;,c=getchar();
+    while(isdigit(c))
+        x=(x&amp;lt;&amp;lt;1)+(x&amp;lt;&amp;lt;3)+(c^48),c=getchar();
+    return f?-x:x;
+}
+
+inline ll sm(ll u,ll v){
+    return (u-1)*m+v;
+}
+
+inline void add(ll u,ll v,ll w){
+    e[++cnt].to=v;
+    e[cnt].dis=w;
+    e[cnt].nx=hd[u];
+    hd[u]=cnt;
+}
+
+inline ll bfs(){
+    memset(d,0,sizeof(d));
+    l=r=1;
+    q[l]=s;
+    d[s]=1;
+    while(l&amp;lt;=r){
+        ll u=q[l++];
+        for(register int i=hd[u];i;i=e[i].nx){
+            ll to=e[i].to;
+            if(!d[to]&amp;amp;&amp;amp;e[i].dis){
+                d[to]=d[u]+1;
+                q[++r]=to;
+            }
+        }
+    }
+    return d[t];
+}
+
+inline ll dfs(ll u,ll limit){
+    if(u==t)
+        return limit;
+    ll flow=0;
+    for(register int i=hd[u];i&amp;amp;&amp;amp;limit;i=e[i].nx){
+        ll to=e[i].to;
+        if(e[i].dis&amp;amp;&amp;amp;d[to]==d[u]+1){
+            ll fj=dfs(to,min(e[i].dis,limit));
+            e[i].dis-=fj;
+            e[i^1].dis+=fj;
+            limit-=fj;
+            flow+=fj;
+        }
+    }
+    if(!flow)   d[u]=0;
+    return flow;
+}
+
+int main(){
+    n=read();m=read();
+    s=n*m*2+1,t=n*m*2+2;
+    for(register int i=1;i&amp;lt;=n;++i)
+        for(register int j=1;j&amp;lt;=m;++j)
+            a[i][j]=read();
+    for(register int i=1;i&amp;lt;=n;++i){
+        for(register int j=1;j&amp;lt;=m;++j){
+            if(a[i][j]==2){
+                add(s,sm(i,j),INF);
+                add(sm(i,j),s,0);   
+
+            }
+            else if(a[i][j]==1){
+                add(sm(i,j),t,INF);
+                add(t,sm(i,j),0);
+            }
+        }
+    }        
+    for(register int i=1;i&amp;lt;=n;++i)
+        for(register int j=1;j&amp;lt;=m;++j)
+            for(register int k=0;k&amp;lt;=3;++k){
+                ll dx=i+fx[k][0];
+                ll dy=j+fx[k][1];
+                if(dx&amp;gt;=1&amp;amp;&amp;amp;dx&amp;lt;=n&amp;amp;&amp;amp;dy&amp;gt;=1&amp;amp;&amp;amp;dy&amp;lt;=m)
+                    add(sm(i,j),sm(dx,dy),1),
+                    add(sm(dx,dy),sm(i,j),0);
+            }       
+    while(bfs())
+        ans+=dfs(s,INF);
+    printf(&amp;quot;%lld\n&amp;quot;,ans);
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">P2598 [ZJOI2009]狼和羊的故事</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://FaineX.github.io/post/ping-heng-shu/"" data-c="
