@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://FaineX.github.io</id>
     <title>For XeniaF</title>
-    <updated>2021-07-12T13:07:54.600Z</updated>
+    <updated>2021-07-13T04:17:55.388Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://FaineX.github.io"/>
     <link rel="self" href="https://FaineX.github.io/atom.xml"/>
@@ -408,15 +408,13 @@ inline ll getmark(ll id,ll x){
         </link>
         <updated>2021-07-11T12:13:17.000Z</updated>
         <content type="html"><![CDATA[<p>关于这个博客。</p>
-<p>XeniaF 是一位非常非常菜的OIER，这个博客主要是用来记录她的一些想法或者做题记录或者做题反思的。</p>
+<p>XeniaF 是一位很菜很菜什么都不会的OIER。</p>
 <ul>
-<li>XeniaF 于2021.7.11来到了这里！</li>
-<li>此博客暂时不会更新题解哦OvO；</li>
-<li>上面有不少很不严谨的思路或者很显然的推论，因此在没有写“算法“或者”题解“的栏目里面，并不希望大家学习里面的任何东西；</li>
-<li>里面可能含有少许奇奇怪怪的言论，大家可以忽略。</li>
-<li>并不希望任何人联系 XeniaF ，因为她实在是太菜啦。</li>
+<li>标有“随笔”的文章，请勿学习里面的任何东西</li>
+<li>标有“算法”或者“题解”的文章，如有错误敬请指出。</li>
+<li>请勿联系 XeniaF ，包括各大信息网站上面。<br>
+<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em></li>
 </ul>
-<p><em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em></p>
 ]]></content>
     </entry>
     <entry>
