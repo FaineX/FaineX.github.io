@@ -2140,26 +2140,26 @@ p > code {
       color: #eee;
       border-bottom-color: #eee;
     }.markdownIt-TOC a:hover {
-      color: #fff;
-      border-bottom-color: #fff;
+      color: #212529;
+      border-bottom-color: #212529;
     }.active-current > a {
-      color: #fc6423 !important;
-      border-bottom-color: #fc6423 !important;
+      color: #212529 !important;
+      border-bottom-color: #212529 !important;
     }
     .sidebar-title-active {
-      color: #fc6423 !important;
-      border-bottom-color: #fc6423 !important;
+      color: #212529;
+      border-bottom-color: #212529;
     }
     .sidebar-title-item:hover {
-      color: #fc6423 !important;
+      color: #212529 !important;
     }
     .active-show > a {
-      color: #fc6423;
-      border-bottom-color: #fc6423;
+      color: #212529;
+      border-bottom-color: #212529;
     }
     .active-hidden > a {
-      color: #fc6423;
-      border-bottom-color: #fc6423;
+      color: #212529;
+      border-bottom-color: #212529;
     }.bg-color {
       background-color: #ffffffbf;
     }
