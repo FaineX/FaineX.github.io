@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="(☆▽☆)">
 <meta name="theme-color" content="#000">
-<title>P2598 [ZJOI2009]狼和羊的故事 | For XeniaF</title>
+<title>P3980 [NOI2008] 志愿者招募&amp;P1251 餐巾计划问题 | For XeniaF</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1626524820108">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,7 +41,7 @@
 
 
 
-  <meta name="description" content="P2598 [ZJOI2009]狼和羊的故事" />
+  <meta name="description" content="P3980 [NOI2008] 志愿者招募&P1251 餐巾计划问题" />
   <meta name="keywords" content="随笔" />
 </head>
 
@@ -312,8 +312,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://FaineX.github.io/post/p2598-zjoi2009lang-he-yang-de-gu-shi/">
-      P2598 [ZJOI2009]狼和羊的故事
+    <a class="post-title-link" href="https://FaineX.github.io/post/p3980-noi2008-zhi-yuan-zhe-zhao-mu/">
+      P3980 [NOI2008] 志愿者招募&amp;P1251 餐巾计划问题
     </a>
   </h1>
   <div class="post-meta">
@@ -321,7 +321,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-07-12 19:48:12">2021-07-12</span>
+      <span class="publish-time" data-t="2021-07-17 17:41:46">2021-07-17</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -340,61 +340,37 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>5<span class="language" data-lan="minute">分钟</span></span>
+      <span>6<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>889<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>946<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>网络最大流。</p>
-<blockquote>
-<p>前言：上课<s>滑水</s>，晚上做题一脸蒙，感谢隔壁的帮助（）</p>
-</blockquote>
-<p>修建栏杆相当于是割断了狼和羊之间的联系方式，即割掉了一条边。<strong>在网格图中，建边的方式为由现在所在的格子向周围四个方向的格子连一条边。</strong>（理论上建立反向边比较赘余，但是因为在跑 Dinic 过程中涉及<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>（本条边）和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>∧</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i \land 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>（反向边）的使用，所以还是建上吧！)因此，在网络流中，要求割最少的边，使得网络不流通，这不就是<strong>网络流最小割问题</strong>嘛？</p>
-<blockquote>
-<p>最小割<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span></span></span></span>最大流</p>
-</blockquote>
-<p>所以在建图以后直接跑 Dinic 就好了。</p>
-<p>当当当当然，只知道建立网格图的网络流肯定是不够的，狼和羊之间的关系应该怎么处理呢？</p>
-<blockquote>
-<p>最小割问题指的是，割去一些边之后，源点到汇点不再流通。</p>
-</blockquote>
-<p>这里要求一定要把狼和羊严格隔开，距离无法隔开他们，也就是说即使他们隔着很多个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>的格子，也是可以互相到达的！这就不满足题目条件了。</p>
-<p>应该就很明显了，这道题就是裸的网络流最小割问题欸。</p>
-<hr>
-<p>总结：</p>
-<ul>
-<li>二维图中用一个数字存储一个坐标：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>∗</mo><mi>m</mi><mo>+</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">(i-1)*m+j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span></li>
-<li>因为是二，维，图，所以建图的数组要开<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mi>n</mi><mo>∗</mo><mi>m</mi><mi>a</mi><mi>x</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">maxn*maxn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mord mathdefault">n</span></span></span></span>！</li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span></span></span></span>的初始值应该赋值为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，因为你在跑 Dinic 的时候，以下这一段容易出事：</li>
-</ul>
-<pre><code class="language-cpp">ll fj=dfs(to,min(e[i].dis,limit));
-e[i].dis-=fj;
-e[i^1].dis+=fj;
-</code></pre>
-<ul>
-<li>加边一定要加反向边啊啊啊！</li>
-</ul>
+              <p>最小费用最大流。</p>
+<p>请老实打<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>K</mi></mrow><annotation encoding="application/x-tex">EK</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span>！！！</p>
 <pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
 #define ll long long
-#define maxn 42100
-#define INF 1000000000
+#define INF 1000000000000
+#define maxn 10010
 using namespace std;
-ll n,m;
-ll q[maxn],l,r,d[maxn];
-ll a[110][110];
-ll ans;
-ll s,t;
+ll n,m,c[maxn];
 ll cnt=1,hd[maxn];
-ll fx[5][3]={{0,1},{0,-1},{1,0},{-1,0}};
+ll ans,s,t;
+ll pos[maxn],pre[maxn],pi[maxn];
+ll dis[maxn];
+ll vit[maxn];
 struct Node{
-    ll nx,to,dis;
-}e[maxn*4];
+    ll nx,to,dis,val;
+}e[maxn&lt;&lt;1];
+struct NODE{
+    ll s,t,c;
+}a[maxn&lt;&lt;1];
+queue&lt;ll&gt;q;
 
 inline ll read(){
     ll x=0,f=0;char c=getchar();
@@ -405,83 +381,188 @@ inline ll read(){
     return f?-x:x;
 }
 
-inline ll sm(ll u,ll v){
-    return (u-1)*m+v;
-}
-
-inline void add(ll u,ll v,ll w){
+inline void add(ll u,ll v,ll w,ll val){
     e[++cnt].to=v;
-    e[cnt].dis=w;
     e[cnt].nx=hd[u];
+    e[cnt].dis=w;
+    e[cnt].val=val;
     hd[u]=cnt;
 }
 
-inline ll bfs(){
-    memset(d,0,sizeof(d));
-    l=r=1;
-    q[l]=s;
-    d[s]=1;
-    while(l&lt;=r){
-        ll u=q[l++];
+inline int spfa(){
+    for(register int i=1;i&lt;=t;++i)
+        vit[i]=0,dis[i]=INF;
+    vit[s]=1,dis[s]=0,
+    q.push(s),pi[s]=INF;
+    while(!q.empty()){
+        ll u=q.front();q.pop();
+        vit[u]=0;
         for(register int i=hd[u];i;i=e[i].nx){
             ll to=e[i].to;
-            if(!d[to]&amp;&amp;e[i].dis){
-                d[to]=d[u]+1;
-                q[++r]=to;
+            if(e[i].dis&amp;&amp;dis[to]&gt;dis[u]+e[i].val){
+                dis[to]=dis[u]+e[i].val;
+                pre[to]=u;
+                pos[to]=i;
+                pi[to]=min(pi[u],e[i].dis);
+                if(!vit[to]){
+                    vit[to]=1;
+                    q.push(to);
+                }
             }
         }
     }
-    return d[t];
+    return (dis[t]!=INF);
 }
 
-inline ll dfs(ll u,ll limit){
-    if(u==t)
-        return limit;
-    ll flow=0;
-    for(register int i=hd[u];i&amp;&amp;limit;i=e[i].nx){
-        ll to=e[i].to;
-        if(e[i].dis&amp;&amp;d[to]==d[u]+1){
-            ll fj=dfs(to,min(e[i].dis,limit));
-            e[i].dis-=fj;
-            e[i^1].dis+=fj;
-            limit-=fj;
-            flow+=fj;
-        }
-    }
-    if(!flow)   d[u]=0;
-    return flow;
-}
+// inline int spfa(){
+//     for(register int i=1;i&lt;=t;++i)
+//         vit[i]=0,dis[i]=INF;
+//     q.push(s);
+//     vit[s]=1,dis[s]=0;
+//     pi[s]=INF;
+//     while(!q.empty()){
+//         ll u=q.front();q.pop();
+//         vit[u]=0;
+//         for(register int i=hd[u];i;i=e[i].nx){
+//             ll to=e[i].to,val=e[i].val;
+//             if(e[i].dis&amp;&amp;dis[to]&gt;dis[u]+val){
+//                 dis[to]=dis[u]+val;
+//                 pos[to]=i;
+//                 pre[to]=u;
+//                 pi[to]=min(pi[u],e[i].dis);
+//                 if(!vit[to]){
+//                     vit[to]=1;
+//                     q.push(to);
+//                 }
+//             }
+//         }
+//     }
+//     return (dis[t]!=INF);
+// }
 
 int main(){
     n=read();m=read();
-    s=n*m*2+1,t=n*m*2+2;
+    s=2*n,t=s+1;
     for(register int i=1;i&lt;=n;++i)
-        for(register int j=1;j&lt;=m;++j)
-            a[i][j]=read();
-    for(register int i=1;i&lt;=n;++i){
-        for(register int j=1;j&lt;=m;++j){
-            if(a[i][j]==2){
-                add(s,sm(i,j),INF);
-                add(sm(i,j),s,0);   
+        c[i]=read();
+    for(register int i=1;i&lt;=m;++i){
+        a[i].s=read();a[i].t=read();a[i].c=read();
+        add(a[i].s,a[i].t+1,INF,a[i].c),
+        add(a[i].t+1,a[i].s,0,-a[i].c);
+    }
+    for(register int i=1;i&lt;=n;++i)
+        add(i,i+1,INF-c[i],0),
+        add(i+1,i,0,0);
+    add(s,1,INF,0),add(1,s,0,0),add(n+1,t,INF,0),add(t,n+1,0,0);
+    ans=0;
+    while(spfa()){
+        ans+=dis[t]*pi[t];
+        for(register int i=t;i!=s;i=pre[i]){
+            e[pos[i]].dis-=pi[t];
+            e[pos[i]^1].dis+=pi[t];
+        }
+    }
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define INF 1000000000000
+#define maxn 100000
+using namespace std;
+ll N,a[maxn];
+ll p,m,f,n,ss;
+ll s,t;
+ll ans;
+ll pi[maxn],pos[maxn],pre[maxn];
+ll dis[maxn];
+struct Node{
+    ll nx,to,val,dis;
+}e[maxn&lt;&lt;2];
+ll cnt=1,hd[maxn];
+ll vit[maxn];
+queue&lt;ll&gt;q;
 
-            }
-            else if(a[i][j]==1){
-                add(sm(i,j),t,INF);
-                add(t,sm(i,j),0);
+inline ll read(){
+    ll x=0,f=0;char c=getchar();
+    while(!isdigit(c))
+        f|=c=='-',c=getchar();
+    while(isdigit(c))
+        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48),c=getchar();
+    return f?-x:x;
+}
+
+inline void add(ll u,ll v,ll dis,ll vl){
+    e[++cnt].to=v;
+    e[cnt].nx=hd[u];
+    e[cnt].dis=dis;
+    e[cnt].val=vl;
+    hd[u]=cnt;
+}
+
+inline ll sm(ll k){
+    return k+N;
+}
+
+inline int spfa(){
+    for(register int i=1;i&lt;=t;++i)
+        vit[i]=0,dis[i]=INF;
+    q.push(s);
+    vit[s]=1,dis[s]=0;
+    pi[s]=INF;
+    while(!q.empty()){
+        ll u=q.front();q.pop();
+        vit[u]=0;
+        for(register int i=hd[u];i;i=e[i].nx){
+            ll to=e[i].to,val=e[i].val;
+            if(e[i].dis&amp;&amp;dis[to]&gt;dis[u]+val){
+                dis[to]=dis[u]+val;
+                pre[to]=i;
+                pos[to]=u;
+                pi[to]=min(pi[u],e[i].dis);
+                if(!vit[to]){
+                    vit[to]=1;
+                    q.push(to);
+                }
             }
         }
+    }
+    return (dis[t]!=INF);
+}
+
+int main(){
+    N=read();
+    for(register int i=1;i&lt;=N;++i)
+        a[i]=read();
+    p=read();m=read();f=read();n=read();ss=read();
+    t=N*3+2;
+    s=t-1;
+    for(register int i=1;i&lt;=N;++i){
+        add(s,i,a[i],0),
+        add(i,s,0,0),
+        add(sm(i),t,a[i],0),
+        add(t,sm(i),0,0);
+        if(i+1&lt;=N)
+            add(i,i+1,INF,0),
+            add(i+1,i,0,0);
+        if(i+m&lt;=N)
+            add(i,sm(i+m),INF,f),
+            add(sm(i+m),i,0,-f);
+        if(i+n&lt;=N)
+            add(i,sm(i+n),INF,ss),
+            add(sm(i+n),i,0,-ss);
+        add(s,sm(i),INF,p),
+        add(sm(i),s,0,-p);
+    }   
+    ans=0;
+    while(spfa()){
+        ans+=pi[t]*dis[t];
+        for(register int i=t;i!=s;i=pos[i]){
+            e[pre[i]].dis-=pi[t];
+            e[pre[i]^1].dis+=pi[t];
+        }
     }        
-    for(register int i=1;i&lt;=n;++i)
-        for(register int j=1;j&lt;=m;++j)
-            for(register int k=0;k&lt;=3;++k){
-                ll dx=i+fx[k][0];
-                ll dy=j+fx[k][1];
-                if(dx&gt;=1&amp;&amp;dx&lt;=n&amp;&amp;dy&gt;=1&amp;&amp;dy&lt;=m)
-                    add(sm(i,j),sm(dx,dy),1),
-                    add(sm(dx,dy),sm(i,j),0);
-            }       
-    while(bfs())
-        ans+=dfs(s,INF);
     printf(&quot;%lld\n&quot;,ans);
     return 0;
 }
@@ -498,7 +579,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://FaineX.github.io/post/p2598-zjoi2009lang-he-yang-de-gu-shi/" title="P2598 [ZJOI2009]狼和羊的故事">https://FaineX.github.io/post/p2598-zjoi2009lang-he-yang-de-gu-shi/</a>
+      <a href="https://FaineX.github.io/post/p3980-noi2008-zhi-yuan-zhe-zhao-mu/" title="P3980 [NOI2008] 志愿者招募&amp;P1251 餐巾计划问题">https://FaineX.github.io/post/p3980-noi2008-zhi-yuan-zhe-zhao-mu/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -514,14 +595,14 @@ int main(){
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="P2774 方格取数问题" href="https://FaineX.github.io/post/p2774-fang-ge-qu-shu-wen-ti/">P2774 方格取数问题</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="P2774 方格取数问题" href="https://FaineX.github.io/post/p2774-fang-ge-qu-shu-wen-ti/">上一篇</a>
+        <a class="nav-pc-next" title="数论" href="https://FaineX.github.io/post/shu-lun/">数论</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="数论" href="https://FaineX.github.io/post/shu-lun/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="平衡树" href="https://FaineX.github.io/post/ping-heng-shu/">平衡树</a>
-        <a class="nav-mobile-next" title="平衡树" href="https://FaineX.github.io/post/ping-heng-shu/">下一篇</a>
+        <a class="nav-pc-next" title="网络流" href="https://FaineX.github.io/post/wang-luo-liu/">网络流</a>
+        <a class="nav-mobile-next" title="网络流" href="https://FaineX.github.io/post/wang-luo-liu/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
