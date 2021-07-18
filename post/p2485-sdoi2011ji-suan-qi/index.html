@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="(☆▽☆)">
 <meta name="theme-color" content="#000">
-<title>P2598 [ZJOI2009]狼和羊的故事 | For XeniaF</title>
+<title>P2485 [SDOI2011]计算器 | For XeniaF</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1626616215969">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,8 +41,8 @@
 
 
 
-  <meta name="description" content="P2598 [ZJOI2009]狼和羊的故事" />
-  <meta name="keywords" content="随笔" />
+  <meta name="description" content="P2485 [SDOI2011]计算器" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -312,8 +312,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://FaineX.github.io/post/p2598-zjoi2009lang-he-yang-de-gu-shi/">
-      P2598 [ZJOI2009]狼和羊的故事
+    <a class="post-title-link" href="https://FaineX.github.io/post/p2485-sdoi2011ji-suan-qi/">
+      P2485 [SDOI2011]计算器
     </a>
   </h1>
   <div class="post-meta">
@@ -321,80 +321,47 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-07-12 19:48:12">2021-07-12</span>
+      <span class="publish-time" data-t="2021-07-18 15:21:51">2021-07-18</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://FaineX.github.io/tag/StVneRMum/">
-        <span>随笔</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>5<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>889<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>611<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>网络最大流。</p>
-<blockquote>
-<p>前言：上课<s>滑水</s>，晚上做题一脸蒙，感谢隔壁的帮助（）</p>
-</blockquote>
-<p>修建栏杆相当于是割断了狼和羊之间的联系方式，即割掉了一条边。<strong>在网格图中，建边的方式为由现在所在的格子向周围四个方向的格子连一条边。</strong>（理论上建立反向边比较赘余，但是因为在跑 Dinic 过程中涉及<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>（本条边）和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>∧</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i \land 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>（反向边）的使用，所以还是建上吧！)因此，在网络流中，要求割最少的边，使得网络不流通，这不就是<strong>网络流最小割问题</strong>嘛？</p>
-<blockquote>
-<p>最小割<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span></span></span></span>最大流</p>
-</blockquote>
-<p>所以在建图以后直接跑 Dinic 就好了。</p>
-<p>当当当当然，只知道建立网格图的网络流肯定是不够的，狼和羊之间的关系应该怎么处理呢？</p>
-<blockquote>
-<p>最小割问题指的是，割去一些边之后，源点到汇点不再流通。</p>
-</blockquote>
-<p>这里要求一定要把狼和羊严格隔开，距离无法隔开他们，也就是说即使他们隔着很多个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>的格子，也是可以互相到达的！这就不满足题目条件了。</p>
-<p>应该就很明显了，这道题就是裸的网络流最小割问题欸。</p>
-<hr>
-<p>总结：</p>
-<ul>
-<li>二维图中用一个数字存储一个坐标：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>∗</mo><mi>m</mi><mo>+</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">(i-1)*m+j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span></li>
-<li>因为是二，维，图，所以建图的数组要开<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mi>n</mi><mo>∗</mo><mi>m</mi><mi>a</mi><mi>x</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">maxn*maxn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mord mathdefault">n</span></span></span></span>！</li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span></span></span></span>的初始值应该赋值为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，因为你在跑 Dinic 的时候，以下这一段容易出事：</li>
-</ul>
-<pre><code class="language-cpp">ll fj=dfs(to,min(e[i].dis,limit));
-e[i].dis-=fj;
-e[i^1].dis+=fj;
-</code></pre>
-<ul>
-<li>加边一定要加反向边啊啊啊！</li>
-</ul>
+              <p>快速幂、扩展欧几里得、BSGS。</p>
+<p>1）询问 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 显然快速幂。<br>
+2）询问 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 要求满足 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mi>y</mi><mo>≡</mo><mi>z</mi><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mi>p</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">xy \equiv z(mod\ p)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65819em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mspace"> </span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span> 。简单来说，</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>x</mi><mi>y</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>q</mi><mi>p</mi><mo>+</mo><mi>z</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>x</mi><mi>y</mi><mo>−</mo><mi>q</mi><mi>p</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>z</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>x</mi><mi>y</mi><mo>+</mo><mo>(</mo><mo>−</mo><mi>q</mi><mo>)</mo><mo>∗</mo><mi>p</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>z</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+xy&amp;=qp+z \\
+
+xy-qp&amp;=z \\
+
+xy+(-q)*p&amp;=z \\
+
+\end{aligned}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.500000000000002em;vertical-align:-2.000000000000001em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.5000000000000004em;"><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">p</span></span></span><span style="top:-1.6599999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.000000000000001em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.5000000000000004em;"><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span></span></span><span style="top:-1.6599999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.000000000000001em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>根据裴蜀定理可知：如果不定方程 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>=</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">ax+by=d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span></span></span></span> 有解，一定满足 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>gcd</mi><mo>⁡</mo><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo><mo>∣</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">\gcd(a,b)\mid d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span style="margin-right:0.01389em;">g</span>cd</span><span class="mopen">(</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span></span></span></span>。<br>
+而上面这个式子是不是长的挺像不定方程的呢？因此直接扩欧即可。<br>
+至于如何寻找最小解，可以参照<a href="https://www.luogu.com.cn/problem/P1516">青蛙的约会</a>这道题的题解（皎月半洒花的博客写的很清楚）<br>
+因为我们只关心 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 的值，并不关心 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 的值，因此也不用在意 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 的解是否为负数（同青蛙的约会）</p>
+<p>3）询问 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>，裸的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>S</mi><mi>G</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">BSGS</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>。模板，没有什么好解释的。<br>
+这道题还有一个特别坑的地方在于，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>的倍数时，有且仅当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span></span></span></span> 也为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span> 的倍数时，答案为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ，否则无解。</p>
 <pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
 #define ll long long
-#define maxn 42100
-#define INF 1000000000
 using namespace std;
-ll n,m;
-ll q[maxn],l,r,d[maxn];
-ll a[110][110];
-ll ans;
-ll s,t;
-ll cnt=1,hd[maxn];
-ll fx[5][3]={{0,1},{0,-1},{1,0},{-1,0}};
-struct Node{
-    ll nx,to,dis;
-}e[maxn*4];
+ll t,k;
+ll y,z,p;
+ll xf,yf,ans;
+map&lt;ll,ll&gt;a;
 
 inline ll read(){
     ll x=0,f=0;char c=getchar();
@@ -405,84 +372,55 @@ inline ll read(){
     return f?-x:x;
 }
 
-inline ll sm(ll u,ll v){
-    return (u-1)*m+v;
+inline ll qpow(ll a,ll b,ll md){
+    ll base=1;
+    while(b){
+        if(b&amp;1)     base*=a,base%=md;
+        b&gt;&gt;=1;
+        a*=a,a%=md;
+    }
+    return base;
 }
 
-inline void add(ll u,ll v,ll w){
-    e[++cnt].to=v;
-    e[cnt].dis=w;
-    e[cnt].nx=hd[u];
-    hd[u]=cnt;
+inline ll exgcd(ll a,ll b,ll &amp;xf,ll &amp;yf){
+    if(!b){
+        xf=1,yf=0;
+        return a;
+    }
+    ans=exgcd(b,a%b,xf,yf);
+    ll tmp=xf;
+    xf=yf,yf=tmp-a/b*yf;
+    return ans;
 }
 
-inline ll bfs(){
-    memset(d,0,sizeof(d));
-    l=r=1;
-    q[l]=s;
-    d[s]=1;
-    while(l&lt;=r){
-        ll u=q[l++];
-        for(register int i=hd[u];i;i=e[i].nx){
-            ll to=e[i].to;
-            if(!d[to]&amp;&amp;e[i].dis){
-                d[to]=d[u]+1;
-                q[++r]=to;
-            }
+inline void bsgs(){
+    ll m=ceil(sqrt(p));
+    if(y%p==0&amp;&amp;(z%p!=0)) { printf(&quot;Orz, I cannot find x!\n&quot;);return; }
+    if(y%p==0&amp;&amp;z%p==0)  {printf(&quot;1\n&quot;);return;}
+    ll now=z%p,f=qpow(y,m,p);
+    a.clear(),a[now]=0;
+    for(register int i=1;i&lt;=m;++i)
+        now=now*y%p,a[now]=i;
+    now=1;ll flag=1;
+    for(register int i=1;i&lt;=m;++i){
+        now=now*f%p;
+        if(a[now]){
+            ll ans=(i*m-a[now])%p;
+            printf(&quot;%lld\n&quot;,(ans+p)%p);
+            flag=0;return;
         }
     }
-    return d[t];
-}
-
-inline ll dfs(ll u,ll limit){
-    if(u==t)
-        return limit;
-    ll flow=0;
-    for(register int i=hd[u];i&amp;&amp;limit;i=e[i].nx){
-        ll to=e[i].to;
-        if(e[i].dis&amp;&amp;d[to]==d[u]+1){
-            ll fj=dfs(to,min(e[i].dis,limit));
-            e[i].dis-=fj;
-            e[i^1].dis+=fj;
-            limit-=fj;
-            flow+=fj;
-        }
-    }
-    if(!flow)   d[u]=0;
-    return flow;
+    printf(&quot;Orz, I cannot find x!\n&quot;);
 }
 
 int main(){
-    n=read();m=read();
-    s=n*m*2+1,t=n*m*2+2;
-    for(register int i=1;i&lt;=n;++i)
-        for(register int j=1;j&lt;=m;++j)
-            a[i][j]=read();
-    for(register int i=1;i&lt;=n;++i){
-        for(register int j=1;j&lt;=m;++j){
-            if(a[i][j]==2){
-                add(s,sm(i,j),INF);
-                add(sm(i,j),s,0);   
-
-            }
-            else if(a[i][j]==1){
-                add(sm(i,j),t,INF);
-                add(t,sm(i,j),0);
-            }
-        }
-    }        
-    for(register int i=1;i&lt;=n;++i)
-        for(register int j=1;j&lt;=m;++j)
-            for(register int k=0;k&lt;=3;++k){
-                ll dx=i+fx[k][0];
-                ll dy=j+fx[k][1];
-                if(dx&gt;=1&amp;&amp;dx&lt;=n&amp;&amp;dy&gt;=1&amp;&amp;dy&lt;=m)
-                    add(sm(i,j),sm(dx,dy),1),
-                    add(sm(dx,dy),sm(i,j),0);
-            }       
-    while(bfs())
-        ans+=dfs(s,INF);
-    printf(&quot;%lld\n&quot;,ans);
+    t=read();k=read();
+    for(register int ac=1;ac&lt;=t;++ac){
+        y=read();z=read();p=read();
+        if(k==1)    printf(&quot;%lld\n&quot;,qpow(y,z,p));
+        if(k==2)    exgcd(y,p,xf,yf),(z%ans!=0)?printf(&quot;Orz, I cannot find x!\n&quot;):printf(&quot;%lld\n&quot;,((xf*(z/ans))%(p/ans)+p/ans)%p/ans);
+        if(k==3)    bsgs();
+    }
     return 0;
 }
 </code></pre>
@@ -498,7 +436,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://FaineX.github.io/post/p2598-zjoi2009lang-he-yang-de-gu-shi/" title="P2598 [ZJOI2009]狼和羊的故事">https://FaineX.github.io/post/p2598-zjoi2009lang-he-yang-de-gu-shi/</a>
+      <a href="https://FaineX.github.io/post/p2485-sdoi2011ji-suan-qi/" title="P2485 [SDOI2011]计算器">https://FaineX.github.io/post/p2485-sdoi2011ji-suan-qi/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -507,21 +445,15 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://FaineX.github.io/tag/StVneRMum/"># 随笔</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="P2774 方格取数问题" href="https://FaineX.github.io/post/p2774-fang-ge-qu-shu-wen-ti/">P2774 方格取数问题</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="P2774 方格取数问题" href="https://FaineX.github.io/post/p2774-fang-ge-qu-shu-wen-ti/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="平衡树" href="https://FaineX.github.io/post/ping-heng-shu/">平衡树</a>
-        <a class="nav-mobile-next" title="平衡树" href="https://FaineX.github.io/post/ping-heng-shu/">下一篇</a>
+        <a class="nav-pc-next" title="对Arahc的数论博客的个人解释" href="https://FaineX.github.io/post/dui-a-bo-ke-de-ge-ren-jie-shi/">对Arahc的数论博客的个人解释</a>
+        <a class="nav-mobile-next" title="对Arahc的数论博客的个人解释" href="https://FaineX.github.io/post/dui-a-bo-ke-de-ge-ren-jie-shi/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
