@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://FaineX.github.io</id>
     <title>For XeniaF</title>
-    <updated>2021-09-11T00:40:19.056Z</updated>
+    <updated>2021-09-11T00:58:15.850Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://FaineX.github.io"/>
     <link rel="self" href="https://FaineX.github.io/atom.xml"/>
@@ -17,10 +17,10 @@
         </link>
         <updated>2021-09-11T00:38:12.000Z</updated>
         <content type="html"><![CDATA[<p>2021 年初赛。</p>
-<h4 id="最重要的事情">最重要的事情</h4>
+<h3 id="最重要的事情">最重要的事情</h3>
 <p>前排膜拜讲题的 <em>Arahc</em> 和 Ckger 神仙！！！</p>
 <p>还有强大的 zhenghaowei 神仙！！！</p>
-<h4 id="各大考试">各大考试</h4>
+<h3 id="各大考试">各大考试</h3>
 <p>1.CSP与NOIP没有关系</p>
 <p>2.省选和NOIP有关系</p>
 <p>3.CSP成绩考的好未必可以省选</p>
@@ -28,7 +28,7 @@
 <p>5.NOIP是竞赛，只有高中生可以参加NOIP</p>
 <p>6.CSP有专业级别的认证和非专业级别的认证</p>
 <p>7.理论上专业级别的难度比非专业级别的难度要难，<s>但实际简单一些</s></p>
-<h4 id="tcp拥塞控制算法">TCP拥塞控制算法</h4>
+<h3 id="tcp拥塞控制算法">TCP拥塞控制算法</h3>
 <p>拥塞控制主要是四个算法：1）慢启动，2）拥塞避免，3）拥塞发生，4）快速恢复。</p>
 <p>没有快启动，因为会爆掉</p>
 ]]></content>
