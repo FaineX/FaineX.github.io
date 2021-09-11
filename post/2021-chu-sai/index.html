@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="(☆▽☆)">
 <meta name="theme-color" content="#000">
-<title>SP1557 GSS2 - Can you answer these queries II | For XeniaF</title>
+<title>2021初赛 | For XeniaF</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1631320813344">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,8 +41,8 @@
 
 
 
-  <meta name="description" content="SP1557 GSS2 - Can you answer these queries II" />
-  <meta name="keywords" content="随笔" />
+  <meta name="description" content="2021初赛" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -180,7 +180,8 @@
       <div class="sidebar-body pisces" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -225,6 +226,205 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E4%BA%8B%E6%83%85">最重要的事情</a></li>
+<li><a href="#%E5%90%84%E5%A4%A7%E8%80%83%E8%AF%95">各大考试</a></li>
+<li><a href="#tcp%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95">TCP拥塞控制算法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -312,8 +512,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://FaineX.github.io/post/sp1557-gss2-can-you-answer-these-queries-ii/">
-      SP1557 GSS2 - Can you answer these queries II
+    <a class="post-title-link" href="https://FaineX.github.io/post/2021-chu-sai/">
+      2021初赛
     </a>
   </h1>
   <div class="post-meta">
@@ -321,150 +521,38 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-09-07 20:04:10">2021-09-07</span>
+      <span class="publish-time" data-t="2021-09-11 08:38:12">2021-09-11</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://FaineX.github.io/tag/StVneRMum/">
-        <span>随笔</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>5<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>931<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>194<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>线段树。</p>
-<p>发现这道题很好将询问离线。。。那就离线呗。</p>
-<p>按右端点排序，然后同一个右端点的在一个循环里面处理。</p>
-<p>考虑到一段区间里面重复的只能算一次，从前往后记录跟 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 位置数值相同的上一个位置 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">pre[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span> ，那 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">pre[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span> 前面的区间就不允许 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span> 产生贡献了。。。那只允许 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">pre[i]+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 的位置能够拥有这个贡献不久好了嘛。。。</p>
-<p>维护四个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>a</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">tag</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span></span></span></span> ：</p>
-<ul>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">sum</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span></span></span></span> ，区间内所有数字的和</li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>o</mi><mi>r</mi><mi>y</mi><mtext> </mtext><mi>s</mi><mi>u</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">history\ sum</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace"> </span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span></span></span></span> ，从最开始到现在的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">sum</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span></span></span></span> 的最大值</li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>a</mi><mi>z</mi><mi>y</mi><mi>t</mi><mi>a</mi><mi>g</mi><mi>s</mi><mi>u</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">lazytagsum</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span></span></span></span> ，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">sum</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span></span></span></span> 的懒标记</li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>a</mi><mi>z</mi><mi>y</mi><mi>t</mi><mi>a</mi><mi>g</mi><mtext> </mtext><mi>h</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>o</mi><mi>r</mi><mi>y</mi><mtext> </mtext><mi>s</mi><mi>u</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">lazytag\ history\ sum</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mspace"> </span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace"> </span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span></span></span></span> ，第二个的懒标记</li>
-</ul>
-<p>其实就是开两个线段树一个储存现在的区间和的情况一个储存最大的区间和的情况。。。</p>
-<p>核心就是维护这两个就行了吧。。。</p>
-<p>最后计算的时候直接用这个区间的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mi>s</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">hsm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">h</span><span class="mord mathdefault">s</span><span class="mord mathdefault">m</span></span></span></span> 就好了。</p>
-<p>至于为什么是左儿子和右儿子的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mi>s</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">hsm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">h</span><span class="mord mathdefault">s</span><span class="mord mathdefault">m</span></span></span></span> 取 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">max</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span></span></span></span> 而不要考虑 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>h</mi><mi>s</mi><mi>m</mi><mo>+</mo><mi>r</mi><mi>h</mi><mi>s</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">lhsm+rhsm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">h</span><span class="mord mathdefault">s</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">h</span><span class="mord mathdefault">s</span><span class="mord mathdefault">m</span></span></span></span> 。。。最大子段和一定要是连续的啊如果最子段和刚好是中间那一段的话应该就会直接被返回 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>r</mi><mi>e</mi><mi>e</mi><mo>[</mo><mi>f</mi><mo>]</mo><mi mathvariant="normal">.</mi><mi>h</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">tree[f].hm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mclose">]</span><span class="mord">.</span><span class="mord mathdefault">h</span><span class="mord mathdefault">m</span></span></span></span> 吧。。。（如果真的这个区间是包含关系的话那应该在上层就起飞了www</p>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-#define ll long long
-#define maxn 400001
-using namespace std;
-ll n,q,pre[maxn&lt;&lt;1],num[maxn&lt;&lt;1],ans[maxn&lt;&lt;1];
-ll a[maxn&lt;&lt;1];
-ll m,j,ct;
-struct Node{
-    ll l,r,id;
-}e[maxn];
-struct NODE{
-    ll sm=0,hm=0,lsm=0,lhm=0;
-}tree[maxn];
-//sum,historySum,lazytagsum,lazytag_hm
-
-inline ll read(){
-    ll x=0,f=0;char c=getchar();
-    while(!isdigit(c))  f|=c=='-',c=getchar();
-    while(isdigit(c))   x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48),c=getchar();
-    return f?-x:x;
-}
-
-inline int cmp(Node u,Node v){
-    if(u.r==v.r)
-        return u.l&lt;v.l;
-    return u.r&lt;v.r;
-}
-
-inline void pushup(ll l,ll r,ll f){
-    tree[f].sm=max(tree[f&lt;&lt;1].sm,tree[f&lt;&lt;1|1].sm);
-    tree[f].hm=max(tree[f&lt;&lt;1].hm,tree[f&lt;&lt;1|1].hm);
-}
-
-inline void work(ll l,ll r,ll f,ll lsm,ll lhm){
-    tree[f].hm=max(tree[f].hm,tree[f].hm+lhm);
-    tree[f].sm+=lsm;
-    tree[f].hm=max(tree[f].hm,tree[f].lsm+lhm);
-    tree[f].lsm+=lsm;
-}
-
-inline void pushdown(ll l,ll r,ll f){
-    ll mid=(l+r)&gt;&gt;1;
-    work(l,mid,f&lt;&lt;1,tree[f].lsm,tree[f].lhm);
-    work(mid+1,r,f&lt;&lt;1|1,tree[f].lsm,tree[f].lhm);
-    tree[f].lsm=0;
-    tree[f].lhm=0;
-}
-
-inline void add(ll l,ll r,ll f,ll cl,ll cr,ll x){
-    if(cl&lt;=l&amp;&amp;cr&gt;=r){
-        tree[f].sm+=x;
-        tree[f].hm=max(tree[f].hm,tree[f].sm);
-        tree[f].lsm+=x;
-        tree[f].lhm=max(tree[f].lhm,tree[f].lsm);
-        return;
-    }
-    ll mid=(l+r)&gt;&gt;1;
-    pushdown(l,r,f);
-    if(cl&lt;=mid)     add(l,mid,f&lt;&lt;1,cl,cr,x);
-    if(mid&lt;cr)      add(mid+1,r,f&lt;&lt;1|1,cl,cr,x);
-    pushup(l,r,f);  
-}
-
-inline ll query(ll l,ll r,ll f,ll cl,ll cr){
-    if(cl&lt;=l&amp;&amp;cr&gt;=r)
-        return tree[f].hm;
-    ll mid=(l+r)&gt;&gt;1,val=-0x7f7f7f7f;
-    pushdown(l,r,f);
-    if(cl&lt;=mid)     val=max(val,query(l,mid,f&lt;&lt;1,cl,cr));
-    if(mid&lt;cr)      val=max(val,query(mid+1,r,f&lt;&lt;1|1,cl,cr));
-    return val;
-}
-
-int main(){
-    n=read();
-    for(register int i=1;i&lt;=n;++i){
-        a[i]=read();
-        pre[i]=num[a[i]+maxn];
-        num[a[i]+maxn]=i;
-    }
-    m=read();
-    for(register int i=1;i&lt;=m;++i){
-        e[i].l=read();
-        e[i].r=read();
-        e[i].id=i;
-    }
-    sort(e+1,e+m+1,cmp);
-    j=1;
-    for(register int i=1;i&lt;=n;++i){
-        ll ql=pre[i]+1,qr=i,ct=a[i];
-        add(1,n,1,ql,qr,ct);
-        for(;e[j].r==i&amp;&amp;j&lt;=m;++j)
-            ans[e[j].id]=query(1,n,1,e[j].l,e[j].r);
-    }
-    for(register int i=1;i&lt;=m;++i)
-        printf(&quot;%lld\n&quot;,ans[i]);
-    return 0;
-}
-</code></pre>
+              <p>2021 年初赛。</p>
+<h4 id="最重要的事情">最重要的事情</h4>
+<p>前排膜拜讲题的 <em>Arahc</em> 和 Ckger 神仙！！！</p>
+<p>还有强大的 zhenghaowei 神仙！！！</p>
+<h4 id="各大考试">各大考试</h4>
+<p>1.CSP与NOIP没有关系</p>
+<p>2.省选和NOIP有关系</p>
+<p>3.CSP成绩考的好未必可以省选</p>
+<p>4.CSP是认证，不是竞赛，所有人都可以报名（是个人就行</p>
+<p>5.NOIP是竞赛，只有高中生可以参加NOIP</p>
+<p>6.CSP有专业级别的认证和非专业级别的认证</p>
+<p>7.理论上专业级别的难度比非专业级别的难度要难，<s>但实际简单一些</s></p>
+<h4 id="tcp拥塞控制算法">TCP拥塞控制算法</h4>
+<p>拥塞控制主要是四个算法：1）慢启动，2）拥塞避免，3）拥塞发生，4）快速恢复。</p>
+<p>没有快启动，因为会爆掉</p>
 
             </div>
             
@@ -477,7 +565,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://FaineX.github.io/post/sp1557-gss2-can-you-answer-these-queries-ii/" title="SP1557 GSS2 - Can you answer these queries II">https://FaineX.github.io/post/sp1557-gss2-can-you-answer-these-queries-ii/</a>
+      <a href="https://FaineX.github.io/post/2021-chu-sai/" title="2021初赛">https://FaineX.github.io/post/2021-chu-sai/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -486,21 +574,15 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://FaineX.github.io/tag/StVneRMum/"># 随笔</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="CF817F MEX Queries" href="https://FaineX.github.io/post/cf817f-mex-queries/">CF817F MEX Queries</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="CF817F MEX Queries" href="https://FaineX.github.io/post/cf817f-mex-queries/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="P4556 [Vani有约会]雨天的尾巴 /【模板】线段树合并" href="https://FaineX.github.io/post/p4556-vani-you-yue-hui-yu-tian-de-wei-ba-mo-ban-xian-duan-shu-he-bing/">P4556 [Vani有约会]雨天的尾巴 /【模板】线段树合并</a>
-        <a class="nav-mobile-next" title="P4556 [Vani有约会]雨天的尾巴 /【模板】线段树合并" href="https://FaineX.github.io/post/p4556-vani-you-yue-hui-yu-tian-de-wei-ba-mo-ban-xian-duan-shu-he-bing/">下一篇</a>
+        <a class="nav-pc-next" title="P2056 [ZJOI2007]捉迷藏" href="https://FaineX.github.io/post/p2056-zjoi2007zhuo-mi-cang/">P2056 [ZJOI2007]捉迷藏</a>
+        <a class="nav-mobile-next" title="P2056 [ZJOI2007]捉迷藏" href="https://FaineX.github.io/post/p2056-zjoi2007zhuo-mi-cang/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
