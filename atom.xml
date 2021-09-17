@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:4000</id>
+    <id>https://FaineX.github.io</id>
     <title>For XeniaF</title>
-    <updated>2021-09-17T14:24:20.281Z</updated>
+    <updated>2021-09-17T14:27:02.928Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://localhost:4000"/>
-    <link rel="self" href="http://localhost:4000/atom.xml"/>
+    <link rel="alternate" href="https://FaineX.github.io"/>
+    <link rel="self" href="https://FaineX.github.io/atom.xml"/>
     <subtitle>(☆▽☆)</subtitle>
-    <logo>http://localhost:4000/images/avatar.png</logo>
-    <icon>http://localhost:4000/favicon.ico</icon>
+    <logo>https://FaineX.github.io/images/avatar.png</logo>
+    <icon>https://FaineX.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, For XeniaF</rights>
     <entry>
         <title type="html"><![CDATA[2021初赛]]></title>
-        <id>http://localhost:4000/post/2021-chu-sai/</id>
-        <link href="http://localhost:4000/post/2021-chu-sai/">
+        <id>https://FaineX.github.io/post/2021-chu-sai/</id>
+        <link href="https://FaineX.github.io/post/2021-chu-sai/">
         </link>
         <updated>2021-09-11T00:38:12.000Z</updated>
         <content type="html"><![CDATA[<p>2021 年初赛。</p>
@@ -68,8 +68,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[P2056 [ZJOI2007]捉迷藏]]></title>
-        <id>http://localhost:4000/post/p2056-zjoi2007zhuo-mi-cang/</id>
-        <link href="http://localhost:4000/post/p2056-zjoi2007zhuo-mi-cang/">
+        <id>https://FaineX.github.io/post/p2056-zjoi2007zhuo-mi-cang/</id>
+        <link href="https://FaineX.github.io/post/p2056-zjoi2007zhuo-mi-cang/">
         </link>
         <updated>2021-09-07T12:10:01.000Z</updated>
         <content type="html"><![CDATA[<p>动态点分治，点分树。</p>
@@ -179,8 +179,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[LCT]]></title>
-        <id>http://localhost:4000/post/lct/</id>
-        <link href="http://localhost:4000/post/lct/">
+        <id>https://FaineX.github.io/post/lct/</id>
+        <link href="https://FaineX.github.io/post/lct/">
         </link>
         <updated>2021-09-07T12:09:31.000Z</updated>
         <content type="html"><![CDATA[<p>LCT 总结。</p>
@@ -260,8 +260,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[8.12考试总结]]></title>
-        <id>http://localhost:4000/post/812-kao-shi-zong-jie/</id>
-        <link href="http://localhost:4000/post/812-kao-shi-zong-jie/">
+        <id>https://FaineX.github.io/post/812-kao-shi-zong-jie/</id>
+        <link href="https://FaineX.github.io/post/812-kao-shi-zong-jie/">
         </link>
         <updated>2021-09-07T12:08:39.000Z</updated>
         <content type="html"><![CDATA[<p>考试总结。</p>
@@ -712,8 +712,8 @@ int main(){
     </entry>
     <entry>
         <title type="html"><![CDATA[ 8.10考试总结]]></title>
-        <id>http://localhost:4000/post/810-kao-shi-zong-jie/</id>
-        <link href="http://localhost:4000/post/810-kao-shi-zong-jie/">
+        <id>https://FaineX.github.io/post/810-kao-shi-zong-jie/</id>
+        <link href="https://FaineX.github.io/post/810-kao-shi-zong-jie/">
         </link>
         <updated>2021-09-07T12:07:59.000Z</updated>
         <content type="html"><![CDATA[<p>上午直到我打完 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span> 之后才发现换了题目...</p>
@@ -780,8 +780,8 @@ int main(){
     </entry>
     <entry>
         <title type="html"><![CDATA[CF741D Arpa’s letter-marked tree and Mehrdad’s Dokhtar-ko]]></title>
-        <id>http://localhost:4000/post/cf741d-arpas-letter-marked-tree-and-mehrdads-dokhtar-ko/</id>
-        <link href="http://localhost:4000/post/cf741d-arpas-letter-marked-tree-and-mehrdads-dokhtar-ko/">
+        <id>https://FaineX.github.io/post/cf741d-arpas-letter-marked-tree-and-mehrdads-dokhtar-ko/</id>
+        <link href="https://FaineX.github.io/post/cf741d-arpas-letter-marked-tree-and-mehrdads-dokhtar-ko/">
         </link>
         <updated>2021-09-07T12:07:04.000Z</updated>
         <content type="html"><![CDATA[<p>dsu on tree。</p>
@@ -857,8 +857,8 @@ for(register int i=hd[x];i;i=e[i].nx)
     </entry>
     <entry>
         <title type="html"><![CDATA[AC自动机]]></title>
-        <id>http://localhost:4000/post/ac-zi-dong-ji/</id>
-        <link href="http://localhost:4000/post/ac-zi-dong-ji/">
+        <id>https://FaineX.github.io/post/ac-zi-dong-ji/</id>
+        <link href="https://FaineX.github.io/post/ac-zi-dong-ji/">
         </link>
         <updated>2021-09-07T12:06:00.000Z</updated>
         <content type="html"><![CDATA[<p>AC自动机。</p>
@@ -1029,8 +1029,8 @@ int main(){
     </entry>
     <entry>
         <title type="html"><![CDATA[P3065 [USACO12DEC]First! G]]></title>
-        <id>http://localhost:4000/post/p3065-usaco12decfirst-g/</id>
-        <link href="http://localhost:4000/post/p3065-usaco12decfirst-g/">
+        <id>https://FaineX.github.io/post/p3065-usaco12decfirst-g/</id>
+        <link href="https://FaineX.github.io/post/p3065-usaco12decfirst-g/">
         </link>
         <updated>2021-09-07T12:05:32.000Z</updated>
         <content type="html"><![CDATA[<p>Trie树 上拓扑。</p>
@@ -1162,8 +1162,8 @@ int main(){
     </entry>
     <entry>
         <title type="html"><![CDATA[CF817F MEX Queries]]></title>
-        <id>http://localhost:4000/post/cf817f-mex-queries/</id>
-        <link href="http://localhost:4000/post/cf817f-mex-queries/">
+        <id>https://FaineX.github.io/post/cf817f-mex-queries/</id>
+        <link href="https://FaineX.github.io/post/cf817f-mex-queries/">
         </link>
         <updated>2021-09-07T12:04:57.000Z</updated>
         <content type="html"><![CDATA[<p>线段树+离散化</p>
@@ -1296,8 +1296,8 @@ int main(){
     </entry>
     <entry>
         <title type="html"><![CDATA[SP1557 GSS2 - Can you answer these queries II]]></title>
-        <id>http://localhost:4000/post/sp1557-gss2-can-you-answer-these-queries-ii/</id>
-        <link href="http://localhost:4000/post/sp1557-gss2-can-you-answer-these-queries-ii/">
+        <id>https://FaineX.github.io/post/sp1557-gss2-can-you-answer-these-queries-ii/</id>
+        <link href="https://FaineX.github.io/post/sp1557-gss2-can-you-answer-these-queries-ii/">
         </link>
         <updated>2021-09-07T12:04:10.000Z</updated>
         <content type="html"><![CDATA[<p>线段树。</p>
