@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://FaineX.github.io</id>
     <title>For XeniaF</title>
-    <updated>2021-09-17T14:39:52.266Z</updated>
+    <updated>2021-09-18T11:44:10.582Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://FaineX.github.io"/>
     <link rel="self" href="https://FaineX.github.io/atom.xml"/>
@@ -17,18 +17,39 @@
         </link>
         <updated>2021-09-11T00:38:12.000Z</updated>
         <content type="html"><![CDATA[<p>2021 年初赛。</p>
-<h4 id="各大考试">各大考试</h4>
-<p>1.CSP与NOIP没有关系</p>
-<p>2.省选和NOIP有关系</p>
-<p>3.CSP成绩考的好未必可以省选</p>
-<p>4.CSP是认证，不是竞赛，所有人都可以报名（是个人就行</p>
-<p>5.NOIP是竞赛，只有高中生可以参加NOIP</p>
-<p>6.CSP有专业级别的认证和非专业级别的认证</p>
-<p>7.理论上专业级别的难度比非专业级别的难度要难，<s>但实际简单一些</s></p>
-<h4 id="tcp拥塞控制算法">TCP拥塞控制算法</h4>
-<p>拥塞控制主要是四个算法：1）慢启动，2）拥塞避免，3）拥塞发生，4）快速恢复。</p>
+<h4 id="各大考试"><strong>各大考试</strong></h4>
+<blockquote>
+<ol>
+<li>
+<p>CSP与NOIP没有关系</p>
+</li>
+<li>
+<p>省选和NOIP有关系</p>
+</li>
+<li>
+<p>CSP成绩考的好未必可以省选</p>
+</li>
+<li>
+<p>CSP是认证，不是竞赛，所有人都可以报名（是个人就行</p>
+</li>
+<li>
+<p>NOIP是竞赛，只有高中生可以参加NOIP</p>
+</li>
+<li>
+<p>CSP有专业级别的认证和非专业级别的认证</p>
+</li>
+<li>
+<p>理论上专业级别的难度比非专业级别的难度要难，<s>但实际简单一些</s></p>
+</li>
+</ol>
+</blockquote>
+<h4 id="tcp拥塞控制算法"><strong>TCP拥塞控制算法</strong></h4>
+<blockquote>
+<p>拥塞控制主要是四个算法：1）慢启动，2）拥塞避免，3）拥塞发生，4）快速恢复</p>
 <p>没有快启动，因为会爆掉。</p>
-<h4 id="反码补码原码">反码补码原码</h4>
+</blockquote>
+<h4 id="反码补码原码"><strong>反码补码原码</strong></h4>
+<blockquote>
 <ol>
 <li>
 <p>正数：反码=补码=原码</p>
@@ -60,10 +81,14 @@
 </tbody>
 </table>
 </li>
-<li>
-<p>照片KB=像素*色深÷8（B）÷1024（KB）</p>
-</li>
 </ol>
+</blockquote>
+<h4 id="像素问题"><strong>像素问题</strong></h4>
+<blockquote>
+<ol>
+<li>照片KB=像素*色深÷8（B）÷1024（KB）</li>
+</ol>
+</blockquote>
 ]]></content>
     </entry>
     <entry>
