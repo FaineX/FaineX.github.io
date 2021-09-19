@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="(☆▽☆)">
 <meta name="theme-color" content="#000">
-<title>P2899 [USACO08JAN]Cell Phone Network G | For XeniaF</title>
+<title>Plan For 2021 | For XeniaF</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1632054095412">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,8 +41,8 @@
 
 
 
-  <meta name="description" content="P2899 [USACO08JAN]Cell Phone Network G" />
-  <meta name="keywords" content="随笔" />
+  <meta name="description" content="Plan For 2021" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -312,8 +312,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://FaineX.github.io/post/p2899-usaco08jancell-phone-network-g/">
-      P2899 [USACO08JAN]Cell Phone Network G
+    <a class="post-title-link" href="https://FaineX.github.io/post/plan-for-2021/">
+      Plan For 2021
     </a>
   </h1>
   <div class="post-meta">
@@ -321,104 +321,77 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-07-11 19:43:46">2021-07-11</span>
+      <span class="publish-time" data-t="2021-09-19 19:44:46">2021-09-19</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://FaineX.github.io/tag/StVneRMum/">
-        <span>随笔</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
+      <span>2<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>543<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>289<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>树形DP。<br>
-思路参考题解。</p>
-<p>典型的树形<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">DP</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span></p>
-<p>不妨设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mn>0</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">f[x][0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span></span></span></span>为x节点被自己影响，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">f[x][1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span>为被儿子影响，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mn>2</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">f[x][2]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">2</span><span class="mclose">]</span></span></span></span>为被父亲影响</p>
-<p>显然，</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mn>0</mn><mo>]</mo><mo>=</mo><mi>s</mi><mi>u</mi><mi>m</mi><mo>(</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>f</mi><mo>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo>]</mo><mo>[</mo><mn>0</mn><mo>]</mo><mo separator="true">,</mo><mi>f</mi><mo>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo>]</mo><mo>[</mo><mn>1</mn><mo>]</mo><mo separator="true">,</mo><mi>f</mi><mo>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo>]</mo><mo>[</mo><mn>2</mn><mo>]</mo><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">f[x][0]=sum(min(f[son][0],f[son][1],f[son][2]))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">2</span><span class="mclose">]</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mn>2</mn><mo>]</mo><mo>=</mo><mi>s</mi><mi>u</mi><mi>m</mi><mo>(</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>f</mi><mo>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo>]</mo><mo>[</mo><mn>0</mn><mo>]</mo><mo separator="true">,</mo><mi>f</mi><mo>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo>]</mo><mo>[</mo><mn>1</mn><mo>]</mo><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">f[x][2]=sum(min(f[son][0],f[son][1]))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">2</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></p>
-<p>而<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>x</mi><mo>]</mo><mo>[</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">f[x][1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span>，即被自己的儿子影响，只要x所有的儿子中有一个放了信号塔就ok了，其余的儿子放不放无所谓</p>
-<p>那么我们可以枚举这个儿子是谁</p>
-<p>假设这个儿子是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">n</span></span></span></span>，除<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">n</span></span></span></span>以外的儿子是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span></p>
-<p>那么最终$f[x][1]=f[sn][0]+min(f[u][1],f[u][0]) $$//<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">其</mi><mi mathvariant="normal">中</mi></mrow><annotation encoding="application/x-tex">其中</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">其</span><span class="mord cjk_fallback">中</span></span></span></span>u<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">儿</mi><mi mathvariant="normal">子</mi><mi mathvariant="normal">可</mi><mi mathvariant="normal">以</mi><mi mathvariant="normal">参</mi><mi mathvariant="normal">照</mi></mrow><annotation encoding="application/x-tex">儿子可以参照</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">儿</span><span class="mord cjk_fallback">子</span><span class="mord cjk_fallback">可</span><span class="mord cjk_fallback">以</span><span class="mord cjk_fallback">参</span><span class="mord cjk_fallback">照</span></span></span></span>f[x][2]$</p>
-<p>看题解吧写的好多了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi><mi>w</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">qwq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span></p>
-<p>细节见代码.</p>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-#define ll long long
-#define maxn 10001
-using namespace std;
-ll n,u,v,hd[maxn],ct,fa[maxn],f[maxn][3];
-struct Node{
-    ll to,nx;
-}e[maxn&lt;&lt;2];
-inline ll read(){
-    ll x=0,f=0;
-    char c=getchar();
-    while(!isdigit(c))
-        f|=c=='-',c=getchar();
-    while(isdigit(c))
-        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48),c=getchar();
-    return f?-x:x;
-}
-inline void add(ll x,ll y){
-    e[++ct].to=y;
-    e[ct].nx=hd[x];
-    hd[x]=ct;
-}
-inline void dfs(ll x){
-    ll sn=0;
-    f[x][0]=1;
-    for(register int i=hd[x];i;i=e[i].nx){
-        ll u=e[i].to;
-        if(u!=fa[x]){
-            fa[u]=x;
-            dfs(u);
-            f[x][0]+=min(f[u][0],min(f[u][1],f[u][2]));
-            f[x][2]+=min(f[u][0],f[u][1]);
-            if((f[sn][0]-min(f[sn][0],f[sn][1]))&gt;(f[u][0]-min(f[u][0],f[u][1])))
-                sn=u;
-        }
-    }
-    f[x][1]=f[sn][0];
-    for(register int i=hd[x];i;i=e[i].nx){
-        ll u=e[i].to;
-        if(fa[x]==u||sn==u)        continue;
-        f[x][1]+=min(f[u][0],f[u][1]);
-    }
-}
-int main(){
-    n=read();
-    for(register int i=1;i&lt;n;++i){
-        u=read();v=read();
-        add(u,v);add(v,u);
-    }
-    f[0][0]=0x3f3f3f3f;
-    dfs(1);
-    printf(&quot;%lld\n&quot;,min(f[1][0],f[1][1]));
-    return 0;
-}
-</code></pre>
+              <p>要复习的东西</p>
+<ul>
+<li>比较难的东西</li>
+</ul>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3702761"><label class="task-list-item-label" for="task-item-3702761"> cdq分治</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7898103"><label class="task-list-item-label" for="task-item-7898103"> kruskal重构树</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5196152"><label class="task-list-item-label" for="task-item-5196152"> 莫队（普通，带修，回滚，树上）</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8792428"><label class="task-list-item-label" for="task-item-8792428"> 分块</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6919877"><label class="task-list-item-label" for="task-item-6919877"> 线段树（动态开点线段树，线段树合并，李超线段树）</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-354195"><label class="task-list-item-label" for="task-item-354195"> 最大流，费用流，二分图最大匹配</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2780539"><label class="task-list-item-label" for="task-item-2780539"> LCT</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8095880"><label class="task-list-item-label" for="task-item-8095880"> 欧拉函数，BSGS，EXCRT，高斯消元</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7108836"><label class="task-list-item-label" for="task-item-7108836"> 字典树，KMP，ACAM（AC自动机），SAM，manacher，回文自动机</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1007031"><label class="task-list-item-label" for="task-item-1007031"> 重链剖分，虚实链剖分</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8368664"><label class="task-list-item-label" for="task-item-8368664"> dsu on tree</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5603915"><label class="task-list-item-label" for="task-item-5603915"> 点分治，点分树</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4560432"><label class="task-list-item-label" for="task-item-4560432"> 四边形不等式</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1366597"><label class="task-list-item-label" for="task-item-1366597"> 斜率优化 DP</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6836779"><label class="task-list-item-label" for="task-item-6836779"> 轮廓线 DP</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3844822"><label class="task-list-item-label" for="task-item-3844822"> 基环树 DP</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4481550"><label class="task-list-item-label" for="task-item-4481550"> 数位 DP</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7586834"><label class="task-list-item-label" for="task-item-7586834"> 区间 DP</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9658536"><label class="task-list-item-label" for="task-item-9658536"> 状压 DP</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3758623"><label class="task-list-item-label" for="task-item-3758623"> 部分期望概率 DP</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-645537"><label class="task-list-item-label" for="task-item-645537"> 主席树，权值线段树</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-772657"><label class="task-list-item-label" for="task-item-772657"> splay，treap</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6755774"><label class="task-list-item-label" for="task-item-6755774"> ST表，tire树，fail树（在某些字符串的题目里有）</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6092697"><label class="task-list-item-label" for="task-item-6092697"> RMQ</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7829588"><label class="task-list-item-label" for="task-item-7829588"> 树的直径，重心（基环树，LCT等）</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2807833"><label class="task-list-item-label" for="task-item-2807833"> 2-SAT</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5778677"><label class="task-list-item-label" for="task-item-5778677"> 卡特兰树</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3505001"><label class="task-list-item-label" for="task-item-3505001"> 矩阵乘法，矩阵快速幂</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4559151"><label class="task-list-item-label" for="task-item-4559151"> 随机化算法</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6596195"><label class="task-list-item-label" for="task-item-6596195"> 根号算法</label></li>
+</ul>
+<ul>
+<li>其他</li>
+</ul>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2375250"><label class="task-list-item-label" for="task-item-2375250"> 高精度加法/乘法/除法</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7665536"><label class="task-list-item-label" for="task-item-7665536"> tarjan缩点/求桥</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4764764"><label class="task-list-item-label" for="task-item-4764764"> 最短路的三种求法</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-245681"><label class="task-list-item-label" for="task-item-245681"> LCA 的两种求法（倍增，树剖）</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4213255"><label class="task-list-item-label" for="task-item-4213255"> 背包问题</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3566799"><label class="task-list-item-label" for="task-item-3566799"> 树状数组</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7844926"><label class="task-list-item-label" for="task-item-7844926"> 逆元的两种求法（树状数组，归并排序）</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4421392"><label class="task-list-item-label" for="task-item-4421392"> 最小生成树（Krusal，LCT）</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2649939"><label class="task-list-item-label" for="task-item-2649939"> 拓扑排序</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6343913"><label class="task-list-item-label" for="task-item-6343913"> 各种变量的范围</label></li>
+</ul>
+<ul>
+<li>做一下往年真题</li>
+</ul>
 
             </div>
             
@@ -431,7 +404,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://FaineX.github.io/post/p2899-usaco08jancell-phone-network-g/" title="P2899 [USACO08JAN]Cell Phone Network G">https://FaineX.github.io/post/p2899-usaco08jancell-phone-network-g/</a>
+      <a href="https://FaineX.github.io/post/plan-for-2021/" title="Plan For 2021">https://FaineX.github.io/post/plan-for-2021/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -440,22 +413,12 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://FaineX.github.io/tag/StVneRMum/"># 随笔</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="P1896 [SCOI2005]互不侵犯" href="https://FaineX.github.io/post/p1896-scoi2005hu-bu-qin-fan/">P1896 [SCOI2005]互不侵犯</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="P1896 [SCOI2005]互不侵犯" href="https://FaineX.github.io/post/p1896-scoi2005hu-bu-qin-fan/">上一篇</a>
-      
     </div>
     <div class="nav-next">
-      
-        <a class="nav-pc-next" title="P3942 将军令" href="https://FaineX.github.io/post/p3942-jiang-jun-ling/">P3942 将军令</a>
-        <a class="nav-mobile-next" title="P3942 将军令" href="https://FaineX.github.io/post/p3942-jiang-jun-ling/">下一篇</a>
-        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>
